@@ -1,0 +1,230 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MarathonSkills2016.SponsorARunner"
+        MinHeight="550"
+        MinWidth="800"
+        Title="SponsorARunner">
+        <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel 
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        Background="#505050"
+                        />
+                <StackPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"
+                            HorizontalAlignment="Left"
+                            Margin="20"
+                            VerticalAlignment="Center">
+                        <StackPanel
+                                Orientation="Horizontal">
+                                <Button Margin=" 0 0 20 0"
+                                        Content="Назад"
+                                        Click="Beack"
+                                        Background="#ebebeb"/>
+                                <TextBlock Text="Marathon Skills 2016"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           FontSize="30"/>
+                        </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center">
+                        <TextBlock Text="Спонсор бегуна"
+                                   HorizontalAlignment="Center"
+                                   Margin="0 20"
+                                   FontSize="20"/>
+                        <TextBlock Text="Пожалуйста выберите бегуна, которого вы хотели бы спонсировать и сумму, которую вы хотели бы спонсировать. Спасибо за вашу поддержку бегунов и их благотворительных ччреждений."
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Margin="30 0"
+                                   TextWrapping="Wrap"/>
+                        <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                                <StackPanel 
+                                        HorizontalAlignment="Left"
+                                        Margin="50 20">
+                                        <TextBlock Text="Информация о Cпонсоре"
+                                                   Margin="0 0 0 20"/>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Margin="0  0 0 10">
+                                                <TextBlock Text="Ваше имя:" VerticalAlignment="Center"
+                                                           Margin=" 0 0 10 0"/>
+                                                <TextBox Watermark="Ваше имя"
+                                                         Width="200"
+                                                         Name="UserName"
+                                                         CornerRadius="0"/>
+                                                <TextBlock
+                                                           Name="UserNamechak"
+                                                           Text="8"
+                                                           VerticalAlignment="Center"
+                                                           Margin=" 10 0 0  0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Margin="0  0 0 10">
+                                                <TextBlock Text="Бегун:" VerticalAlignment="Center"
+                                                           Margin=" 0 0 10 0"/>
+                                                <ComboBox
+                                                    CornerRadius="0"
+                                                    Width="200"
+                                                    Name="RunerComboBox">
+                                                    <ComboBoxItem Name="BoxItem"/>
+                                                </ComboBox>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Margin="0  0 0 10">
+                                                <TextBlock Text="Карта:" VerticalAlignment="Center"
+                                                           Margin=" 0 0 10 0"/>
+                                                <TextBox Watermark="Владелец карты"
+                                                         Width="200"
+                                                         Name="Owner"
+                                                         CornerRadius="0"/>
+                                                <TextBlock
+                                                    Name="Ownerchak"
+                                                    Text="8"
+                                                    VerticalAlignment="Center"
+                                                    Margin=" 10 0 0  0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Margin="0  0 0 10">
+                                                <TextBlock Text="Номер карты:" VerticalAlignment="Center"
+                                                           Margin=" 0 0 10 0"/>
+                                                <TextBox Watermark="1234 1234 1234 1234"
+                                                         Width="200"
+                                                         Name="Number"
+                                                         CornerRadius="0"/>
+                                                <TextBlock
+                                                    Name="Numberchak"
+                                                    Text="8"
+                                                    VerticalAlignment="Center"
+                                                    Margin=" 10 0 0  0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Margin="0  0 0 10">
+                                            <TextBlock Text="Срок действия:" VerticalAlignment="Center"
+                                                       Margin=" 0 0 10 0"/>
+                                            <TextBox Watermark="01"
+                                                     Name="Day"
+                                                     CornerRadius="0"
+                                                     Margin="0 0 10 0"/>
+                                            <TextBox Watermark="2017"
+                                                     Name="Year"
+                                                     CornerRadius="0"/>
+                                            <TextBlock
+                                                Name="Yearchak"
+                                                Text="8"
+                                                VerticalAlignment="Center"
+                                                Margin=" 10 0 0  0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Margin="0  0 0 10">
+                                            <TextBlock Text="CVC:" VerticalAlignment="Center"
+                                                       Margin=" 0 0 10 0"/>
+                                            <TextBox Watermark="123"
+                                                     Name="CVC"
+                                                     CornerRadius="0"/>
+                                            <TextBlock
+                                                Name="CVCchak"
+                                                Text="8"
+                                                VerticalAlignment="Center"
+                                                Margin=" 10 0 0  0"/>
+                                        </StackPanel>
+                                        
+                                </StackPanel>
+                                <StackPanel 
+                                        HorizontalAlignment="Right"
+                                        Margin="20">
+                                        <TextBlock Text="Информация о Cпонсоре"/>
+                                        <StackPanel HorizontalAlignment="Center" Margin="10">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Фонд Кошек"
+                                                           HorizontalAlignment="Center"
+                                                           Margin="10"/>
+                                                <Button BorderBrush="Goldenrod" Background="Transparent"
+                                                        BorderThickness="3"
+                                                        Width="30"
+                                                        Height="30"
+                                                        CornerRadius="50">
+                                                    <TextBlock 
+                                                        Foreground="Goldenrod"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Text="i"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <TextBlock Text="Сумма пожеотвования"/>
+                                        <TextBlock Name="SumSpons"
+                                                   FontSize="50"
+                                                   Text="50"
+                                                   HorizontalAlignment="Center"
+                                                   Margin="10"/>
+                                        <StackPanel
+                                            HorizontalAlignment="Center"
+                                            Orientation="Horizontal">
+                                            <Button
+                                                Click="Minus"
+                                                Width="30">
+                                                <TextBlock Text="-"
+                                                           HorizontalAlignment="Center"/>
+                                            </Button>
+                                            <TextBox
+                                                Margin="10"
+                                                Name="SumText"
+                                                CornerRadius="0"/>
+                                            <Button
+                                                Click="Plus"
+                                                Width="30">
+                                                <TextBlock Text="+"
+                                                           HorizontalAlignment="Center"/>
+                                            </Button>
+                                        </StackPanel>
+                                        <StackPanel
+                                            HorizontalAlignment="Center"
+                                            Orientation="Horizontal">
+                                            <Button
+                                                Click="Pay"
+                                                Margin="10"
+                                                BorderBrush="Black"
+                                                BorderThickness="1">
+                                                <TextBlock Text="Заплатить"
+                                                           HorizontalAlignment="Center"/>
+                                            </Button>
+                                            <Button
+                                                Margin="10"
+                                                BorderBrush="Black"
+                                                Click="Beack"
+                                                BorderThickness="1">
+                                                <TextBlock Text="Отмена"
+                                                           HorizontalAlignment="Center"/>
+                                            </Button>
+                                        </StackPanel>
+                                </StackPanel>
+                        </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Background="#505050"/>
+                <StackPanel Grid.Column="1" Grid.Row="2"
+                            Grid.ColumnSpan="3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                        <TextBlock Name="Timers" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                </StackPanel>
+        </Grid>
+</Window>
