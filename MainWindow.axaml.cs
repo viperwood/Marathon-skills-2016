@@ -1,3 +1,5 @@
+using System;
+using System.Timers;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 
@@ -5,15 +7,20 @@ namespace MarathonSkills2016;
 
 public partial class MainWindow : Window
 {
+    private static System.Timers.Timer aTimer;
     public MainWindow()
     {
+        aTimer = new System.Timers.Timer(1000);
         InitializeComponent();
-        Timerblock();
+        aTimer.Elapsed += Timerblock;
+        aTimer.AutoReset = true;
+        aTimer.Enabled = true;
     }
 
-    public void Timerblock()
+    public void Timerblock(Object source, ElapsedEventArgs e)
     {
-        Timers.Text = Timer.Timerstart;
+        TimerMarafon timerMarafon = new TimerMarafon();/*
+        Timers.Text = timerMarafon.Timer1();*/
     }
 
     private void IHaveStateRuner(object? sender, RoutedEventArgs e)
