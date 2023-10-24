@@ -29,6 +29,8 @@ public partial class User783Context : DbContext
     public virtual DbSet<Marathon> Marathons { get; set; }
 
     public virtual DbSet<Myresult> Myresults { get; set; }
+    
+    public virtual DbSet<Runnerinf> Runnerinf { get; set; }
 
     public virtual DbSet<Position> Positions { get; set; }
 
@@ -214,6 +216,27 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Registrationtimestamp)
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("registrationtimestamp");
+        });
+        
+        modelBuilder.Entity<Runnerinf>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("runnerinf", "Test2");
+            
+            entity.Property(e => e.Runnerid).HasColumnName("runnerid");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .HasColumnName("email");
+            entity.Property(e => e.Gender)
+                .HasMaxLength(10)
+                .HasColumnName("gender");
+            entity.Property(e => e.Firstname)
+                .HasMaxLength(80)
+                .HasColumnName("firstname");
+            entity.Property(e => e.Lastname)
+                .HasMaxLength(80)
+                .HasColumnName("lastname");
         });
 
         modelBuilder.Entity<Position>(entity =>
