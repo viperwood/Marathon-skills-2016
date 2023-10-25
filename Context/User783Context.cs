@@ -237,6 +237,14 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Lastname)
                 .HasMaxLength(80)
                 .HasColumnName("lastname");
+            entity.Property(e => e.Bibnumber).HasColumnName("bibnumber");
+            entity.Property(e => e.Countrycode)
+                .HasMaxLength(3)
+                .IsFixedLength()
+                .HasColumnName("countrycode");
+            entity.Property(e => e.Sponsorname)
+                .HasMaxLength(150)
+                .HasColumnName("sponsorname");
         });
 
         modelBuilder.Entity<Position>(entity =>

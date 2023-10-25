@@ -40,7 +40,9 @@ public partial class MainWindow : Window
 
     private void MoreInform(object? sender, RoutedEventArgs e)
     {
-        
+        FindOutMoreInformation findOutMoreInformation = new FindOutMoreInformation();
+        findOutMoreInformation.Show();
+        Close();
     }
 
     private void Login(object? sender, RoutedEventArgs e)

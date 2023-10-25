@@ -17,8 +17,20 @@ build_property.ProjectDir = C:\Users\prdb\RiderProjects\MarathonSkills2016\Marat
 [C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/FindOutMoreInformation.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/ListOfCharities.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/SponsorARunner.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/SponsorARunnerInfo.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/SponsorshipConfirmation.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

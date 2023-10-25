@@ -1,0 +1,56 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MarathonSkills2016.SponsorARunnerInfo"
+        MinWidth="450"
+        MinHeight="450"
+        Title="SponsorARunnerInfo">
+    <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+            <StackPanel 
+                    Grid.Column="1"
+                    Grid.Row="0">
+                <TextBlock 
+                        Name="NameFond"
+                        FontSize="20"
+                        Margin="20"
+                        HorizontalAlignment="Center"/>
+                <Button
+                        Width="150"
+                        Height="150"
+                        CornerRadius="90"
+                        HorizontalAlignment="Center"
+                        Margin="20"
+                        Background="Goldenrod">
+                        <TextBlock
+                                Text="Logo"
+                                FontSize="30"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+            <StackPanel 
+                    Margin="20"
+                    Grid.Column="1"
+                    Grid.Row="1">
+                    <TextBlock 
+                            TextWrapping="Wrap"
+                            Text="Здесь указывается описание благотворительной организации. Должна быть обеспечена возможность просмотра большого количества информации в данном окне"
+                            FontSize="20"
+                            TextAlignment="Left"
+                            Margin="20"
+                            HorizontalAlignment="Center"/>
+                    
+            </StackPanel>
+        </Grid>
+</Window>

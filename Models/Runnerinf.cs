@@ -11,4 +11,10 @@ public partial class Runnerinf
     public string? Lastname { get; set; }
     
     public string Gender { get; set; } = null!;
+    
+    public short? Bibnumber { get; set; }
+    
+    public string Countrycode { get; set; } = null!;
+    
+    public string Sponsorname { get; set; } = null!;
 }

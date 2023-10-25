@@ -13,6 +13,7 @@ using Avalonia.Media;
 using MarathonSkills2016.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Timers;
+using Avalonia.Input;
 using Avalonia.Threading;
 using Timer = System.Timers.Timer;
 
@@ -22,18 +23,33 @@ namespace MarathonSkills2016;
 public partial class SponsorARunner : Window
 {
     private DispatcherTimer _disTimer = new DispatcherTimer();
-    public int sum = 50;
+    private int sum = 50;
+    private int contextComboBox = 0;
     public SponsorARunner()
     {
         InitializeComponent();
         Namerunner();
+        Events();
+    }
+
+    private void Events()
+    {
         _disTimer.Interval = TimeSpan.FromSeconds(0);
         _disTimer.Tick += DispatcherTimer_Tick;
         _disTimer.Start();
         SumText.Text = $"{sum}";
         SumText.KeyUp += SearchTextBoxOnKeyUp;
+        RunerComboBox.SelectionChanged += RunerComboBoxSC;
     }
-    
+
+    private void RunerComboBoxSC(object? sender, SelectionChangedEventArgs e)
+    {
+        contextComboBox = RunerComboBox.SelectedIndex;
+        List<Runnerinf> runnerinfs = Helper.Database.Runnerinf.ToList();
+        Fond.Text = runnerinfs[contextComboBox].Sponsorname;
+        ButtonInf.IsVisible = true;
+    }
+
     private void DispatcherTimer_Tick(object? sender, EventArgs e)
     {
         TimerMarafon timerMarafon = new TimerMarafon();
@@ -53,12 +69,13 @@ public partial class SponsorARunner : Window
             SumSpons.Text = $"${sum}";
         }
     }
+    
 
     private void Namerunner()
     {
         RunerComboBox.Items = Helper.Database.Runnerinf.Select(x => new
         {
-            Namerun = x.Lastname + " " + x.Firstname
+            Namerun = x.Lastname + " " + x.Firstname + " - " + x.Bibnumber + $" ({x.Countrycode})"
         }).ToList();
     }
     
@@ -93,10 +110,12 @@ public partial class SponsorARunner : Window
 
     private void Pay(object? sender, RoutedEventArgs e)
     {
+        byte chak = 0;
         if (RunerComboBox.SelectedIndex == -1)
         {
             Runnerchak.Foreground = Brushes.Red;
             Runnerchak.Text = "Все поля обязательны!";
+            chak += 1;
         }
         else
         {
@@ -107,6 +126,7 @@ public partial class SponsorARunner : Window
         {
             UserNamechak.Foreground = Brushes.Red;
             UserNamechak.Text = "Все поля обязательны!";
+            chak += 1;
         }
         else
         {
@@ -117,6 +137,7 @@ public partial class SponsorARunner : Window
         {
             Ownerchak.Foreground = Brushes.Red;
             Ownerchak.Text = "Все поля обязательны!";
+            chak += 1;
         }
         else
         {
@@ -127,16 +148,27 @@ public partial class SponsorARunner : Window
         {
             Numberchak.Foreground = Brushes.Red;
             Numberchak.Text = "Все поля обязательны!";
+            chak += 1;
         }
         else
         {
-            Numberchak.Text = "";
+            if (Number.Text.Length == 16)
+            {
+                Numberchak.Text = "";
+            }
+            else
+            {
+                Numberchak.Foreground = Brushes.Red;
+                Numberchak.Text = "Номер карты должен содержать 16 цифр!";
+                chak += 1;
+            }
         }
 
         if (Year.Text == "" || Day.Text == "" || Year.Text == null || Day.Text == null)
         {
             Yearchak.Foreground = Brushes.Red;
             Yearchak.Text = "Все поля обязательны!";
+            chak += 1;
         }
         else
         {
@@ -150,12 +182,13 @@ public partial class SponsorARunner : Window
                 if ((DateTime.Now.Year - year == 1 && DateTime.Now.Month - month == 0) || (DateTime.Now.Year - year == 0 &&
                         DateTime.Now.Month - month >= 0 && DateTime.Now.Month - month < 13))
                 {
-                    CVCchak.Text = "";
+                    Yearchak.Text = "";
                 }
                 else
                 {
                     Yearchak.Foreground = Brushes.Red;
                     Yearchak.Text = "Карта не действительна";
+                    chak += 1;
                 }
             }
         }
@@ -164,6 +197,7 @@ public partial class SponsorARunner : Window
         {
                 CVCchak.Foreground = Brushes.Red;
                 CVCchak.Text = "Все поля обязательны!";
+                chak += 1;
         }
         else
         {
@@ -175,8 +209,22 @@ public partial class SponsorARunner : Window
             else
             {
                 CVCchak.Foreground = Brushes.Red;
-                CVCchak.Text = "CVC код должен содержать три цифры!"; 
+                CVCchak.Text = "CVC код должен содержать три цифры!";
+                chak += 1;
             }
         }
+        
+        if (chak == 0)
+        {
+            SponsorshipConfirmation sponsorshipConfirmation = new SponsorshipConfirmation(contextComboBox, sum);
+            sponsorshipConfirmation.Show();
+            Close();
+        }
+    }
+
+    private void Infowindow(object? sender, RoutedEventArgs e)
+    {
+        SponsorARunnerInfo sponsorARunnerInfo = new SponsorARunnerInfo(contextComboBox);
+        sponsorARunnerInfo.Show();
     }
 }
