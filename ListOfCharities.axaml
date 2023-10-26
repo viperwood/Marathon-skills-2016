@@ -4,6 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MarathonSkills2016.ListOfCharities"
+        MinHeight="600"
+        MinWidth="800"
         Title="ListOfCharities">
     <Grid>
                 <Grid.RowDefinitions>
@@ -13,7 +15,6 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
@@ -31,6 +32,7 @@
                                 Orientation="Horizontal">
                                 <Button Margin=" 0 0 20 0"
                                         Content="Назад"
+                                        Click="Beack"
                                         Background="#ebebeb"/>
                                 <TextBlock Text="Marathon Skills 2016"
                                            Foreground="White"
@@ -51,6 +53,8 @@
                                 TextAlignment="Center"/>
                         <ScrollViewer>
                                 <ListBox
+                                        Margin="20"
+                                        Height="300"
                                         Name="ListBoxFond">
                                         <ListBox.ItemTemplate>
                                                 <DataTemplate>
@@ -78,13 +82,13 @@
                                                                                 HorizontalAlignment="Center"
                                                                                 TextWrapping="Wrap"
                                                                                 FontSize="20"
-                                                                                Name="{Binding NameFond}"/>
+                                                                                Text="{Binding NameFond}"/>
                                                                         <TextBlock 
                                                                                 Width="500"
                                                                                 TextAlignment="Left"
                                                                                 HorizontalAlignment="Center"
                                                                                 TextWrapping="Wrap"
-                                                                                Text="Описание благотворительности идет сюда. Описание благотворительности идет сюда. Описание благотворительности идет сюда. "/>
+                                                                                Text="{Binding DescriptionFond}"/>
                                                                 </StackPanel>
                                                         </StackPanel>
                                                 </DataTemplate>

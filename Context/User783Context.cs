@@ -18,6 +18,8 @@ public partial class User783Context : DbContext
 
     public virtual DbSet<Charity> Charities { get; set; }
 
+    public virtual DbSet<Charityfoundation> Charityfoundations { get; set; }
+
     public virtual DbSet<Country> Countries { get; set; }
 
     public virtual DbSet<Event> Events { get; set; }
@@ -29,10 +31,6 @@ public partial class User783Context : DbContext
     public virtual DbSet<Marathon> Marathons { get; set; }
 
     public virtual DbSet<Myresult> Myresults { get; set; }
-    
-    public virtual DbSet<Runnerinf> Runnerinf { get; set; }
-
-    public virtual DbSet<Position> Positions { get; set; }
 
     public virtual DbSet<Racekitoption> Racekitoptions { get; set; }
 
@@ -46,19 +44,17 @@ public partial class User783Context : DbContext
 
     public virtual DbSet<Runner> Runners { get; set; }
 
-    public virtual DbSet<Schedule> Schedules { get; set; }
+    public virtual DbSet<Runnerinf> Runnerinfs { get; set; }
 
     public virtual DbSet<Sponsorship> Sponsorships { get; set; }
-
-    public virtual DbSet<Staff> Staff { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<Volunteer> Volunteers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Database = user783; Username = user783; Host = 192.168.0.4; Password = 49242");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https: //go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseNpgsql("Database = user783; Host = 192.168.0.4; Username = user783; Password = 49242");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -78,6 +74,21 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Charityname)
                 .HasMaxLength(100)
                 .HasColumnName("charityname");
+        });
+
+        modelBuilder.Entity<Charityfoundation>(entity =>
+        {
+            entity.HasKey(e => e.Fundid).HasName("charityfoundation_pkey");
+
+            entity.ToTable("charityfoundation", "Test2");
+
+            entity.Property(e => e.Fundid).HasColumnName("fundid");
+            entity.Property(e => e.Funddescription)
+                .HasMaxLength(2000)
+                .HasColumnName("funddescription");
+            entity.Property(e => e.Fundname)
+                .HasMaxLength(100)
+                .HasColumnName("fundname");
         });
 
         modelBuilder.Entity<Country>(entity =>
@@ -216,6 +227,7 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Registrationtimestamp)
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("registrationtimestamp");
+            entity.Property(e => e.Runnerid).HasColumnName("runnerid");
         });
         
         modelBuilder.Entity<Runnerinf>(entity =>
@@ -245,21 +257,12 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Sponsorname)
                 .HasMaxLength(150)
                 .HasColumnName("sponsorname");
-        });
-
-        modelBuilder.Entity<Position>(entity =>
-        {
-            entity.HasKey(e => e.Positionid).HasName("position_pkey");
-
-            entity.ToTable("position", "Test2");
-
-            entity.Property(e => e.Positionid).HasColumnName("positionid");
-            entity.Property(e => e.Positiondescription)
-                .HasMaxLength(80)
-                .HasColumnName("positiondescription");
-            entity.Property(e => e.Positionname)
-                .HasMaxLength(80)
-                .HasColumnName("positionname");
+            entity.Property(e => e.Funddescription)
+                .HasMaxLength(2000)
+                .HasColumnName("funddescription");
+            entity.Property(e => e.Fundname)
+                .HasMaxLength(100)
+                .HasColumnName("fundname");
         });
 
         modelBuilder.Entity<Racekitoption>(entity =>
@@ -414,18 +417,6 @@ public partial class User783Context : DbContext
                 .HasConstraintName("runner_gender_fkey");
         });
 
-        modelBuilder.Entity<Schedule>(entity =>
-        {
-            entity.HasKey(e => e.Schedulesid).HasName("schedules_pkey");
-
-            entity.ToTable("schedules", "Test2");
-
-            entity.Property(e => e.Schedulesid).HasColumnName("schedulesid");
-            entity.Property(e => e.Schedulesname)
-                .HasMaxLength(80)
-                .HasColumnName("schedulesname");
-        });
-
         modelBuilder.Entity<Sponsorship>(entity =>
         {
             entity.HasKey(e => e.Sponsorshipid).HasName("sponsorship_pkey");
@@ -436,50 +427,20 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Amount)
                 .HasPrecision(10, 2)
                 .HasColumnName("amount");
+            entity.Property(e => e.Fundid).HasColumnName("fundid");
             entity.Property(e => e.Registrationid).HasColumnName("registrationid");
             entity.Property(e => e.Sponsorname)
                 .HasMaxLength(150)
                 .HasColumnName("sponsorname");
 
+            entity.HasOne(d => d.Fund).WithMany(p => p.Sponsorships)
+                .HasForeignKey(d => d.Fundid)
+                .HasConstraintName("sponsorship_fundid_fkey");
+
             entity.HasOne(d => d.Registration).WithMany(p => p.Sponsorships)
                 .HasForeignKey(d => d.Registrationid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("sponsorship_registrationid_fkey");
-        });
-
-        modelBuilder.Entity<Staff>(entity =>
-        {
-            entity.HasKey(e => e.Staffid).HasName("staff_pkey");
-
-            entity.ToTable("staff", "Test2");
-
-            entity.Property(e => e.Staffid).HasColumnName("staffid");
-            entity.Property(e => e.Dateofbirth)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("dateofbirth");
-            entity.Property(e => e.Emailaddress)
-                .HasMaxLength(80)
-                .HasColumnName("emailaddress");
-            entity.Property(e => e.Fullname)
-                .HasMaxLength(80)
-                .HasColumnName("fullname");
-            entity.Property(e => e.Gender)
-                .HasMaxLength(10)
-                .HasColumnName("gender");
-            entity.Property(e => e.Payperiod)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("payperiod");
-            entity.Property(e => e.Positionid).HasColumnName("positionid");
-            entity.Property(e => e.Schedulesid).HasColumnName("schedulesid");
-
-            entity.HasOne(d => d.Position).WithMany(p => p.Staff)
-                .HasForeignKey(d => d.Positionid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("staff_positionid_fkey");
-
-            entity.HasOne(d => d.Schedules).WithMany(p => p.Staff)
-                .HasForeignKey(d => d.Schedulesid)
-                .HasConstraintName("staff_schedulesid_fkey");
         });
 
         modelBuilder.Entity<User>(entity =>

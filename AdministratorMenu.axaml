@@ -3,10 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="MarathonSkills2016.FindOutMoreInformation"
-        MinHeight="450"
-        MinWidth="500"
-        Title="FindOutMoreInformation">
+        x:Class="MarathonSkills2016.AdministratorMenu"
+        Title="AdministratorMenu">
     <Grid>
                 <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
@@ -39,6 +37,14 @@
                                            Foreground="White"
                                            HorizontalAlignment="Center"
                                            FontSize="30"/>
+                                <StackPanel
+                                        Margin="20 0 0 0"
+                                        VerticalAlignment="Center">
+                                        <Button
+                                                Click="Logout"
+                                                Content="Logout"
+                                                Background="#ebebeb"/>
+                                </StackPanel>
                         </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="1"
@@ -51,14 +57,14 @@
                         <StackPanel 
                                 HorizontalAlignment="Center"
                                 Orientation="Horizontal">
-                                <Button Content="Marathon Skills 2016"
+                                <Button Content="Пользователи"
                                         BorderBrush="Black"
                                         CornerRadius="10"
                                         Height="70" Width="200" 
                                         VerticalContentAlignment="Center"
                                         HorizontalContentAlignment="Center"
                                         Margin="10"/>
-                                <Button Content="Насколько долгий марафон"
+                                <Button Content="Волонтеры"
                                         BorderBrush="Black"
                                         CornerRadius="10"
                                         Height="70" Width="200" 
@@ -69,43 +75,30 @@
                         <StackPanel 
                                 HorizontalAlignment="Center"
                                 Orientation="Horizontal">
-                                <Button Content="Предыдущие результаты"
-                                        BorderBrush="Black"
+                                <Button BorderBrush="Black"
                                         CornerRadius="10"
                                         Height="70" Width="200" 
                                         VerticalContentAlignment="Center"
                                         HorizontalContentAlignment="Center"
-                                        Margin="10"/>
-                                <Button BorderBrush="Black"
-                                        CornerRadius="10"
-                                        Height="70" Width="200"
-                                        Click="ListFond"
                                         Margin="10">
                                         <TextBlock
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 TextAlignment="Center"
-                                                Text="Список благотворительных организаций"
+                                                Text="Благотворительные организации"
                                                 TextWrapping="Wrap"/>
                                 </Button>
-                        </StackPanel>
-                        <StackPanel 
-                                HorizontalAlignment="Center"
-                                Orientation="Horizontal">
-                                <Button Content="BMI калькулятор"
-                                        BorderBrush="Black"
+                                <Button BorderBrush="Black"
                                         CornerRadius="10"
-                                        Height="70" Width="200" 
-                                        VerticalContentAlignment="Center"
-                                        HorizontalContentAlignment="Center"
-                                        Margin="10"/>
-                                <Button Content="BMR калькулятор"
-                                        BorderBrush="Black"
-                                        CornerRadius="10"
-                                        Height="70" Width="200" 
-                                        VerticalContentAlignment="Center"
-                                        HorizontalContentAlignment="Center"
-                                        Margin="10"/>
+                                        Height="70" Width="200"
+                                        Margin="10">
+                                        <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                TextAlignment="Center"
+                                                Text="Инвентарь"
+                                                TextWrapping="Wrap"/>
+                                </Button>
                         </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Background="#505050"/>

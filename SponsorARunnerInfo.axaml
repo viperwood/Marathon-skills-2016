@@ -45,7 +45,7 @@
                     Grid.Row="1">
                     <TextBlock 
                             TextWrapping="Wrap"
-                            Text="Здесь указывается описание благотворительной организации. Должна быть обеспечена возможность просмотра большого количества информации в данном окне"
+                            Name="Description"
                             FontSize="20"
                             TextAlignment="Left"
                             Margin="20"

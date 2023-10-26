@@ -1,0 +1,112 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MarathonSkills2016.LoginWindow"
+        MinHeight="500"
+        MinWidth="600"
+        Title="LoginWindow">
+    <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel 
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        Background="#505050"
+                        />
+                <StackPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"
+                            HorizontalAlignment="Left"
+                            Margin="20"
+                            VerticalAlignment="Center">
+                        <StackPanel
+                                Orientation="Horizontal">
+                                <Button Margin=" 0 0 20 0"
+                                        Content="Назад"
+                                        Click="Beack"
+                                        Background="#ebebeb"/>
+                                <TextBlock Text="Marathon Skills 2016"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           FontSize="30"/>
+                        </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center">
+                        <TextBlock Text="Форма авторизации"
+                                   Margin="20"
+                                   TextAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock
+                                TextWrapping="Wrap"
+                                Text="Пожалуйста, авторизуйтесь в системе, используя ваш адрес электронной почты и пароль."
+                                TextAlignment="Center"/>
+                        <StackPanel
+                                HorizontalAlignment="Center"
+                                Margin="20"
+                                Orientation="Horizontal">
+                                <TextBlock Text="Email:"
+                                           Margin="0 0 10 0"
+                                           VerticalAlignment="Center"/>
+                                <TextBox Watermark="Enter your email address"
+                                         Width="300"
+                                         Name="EmailBox"
+                                         CornerRadius="0"/>
+                                <TextBlock
+                                        Name="EmailChack"
+                                        Margin="10 0 10 0"
+                                        VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock Text="Password:"
+                                           Margin="0 0 10 0"
+                                           VerticalAlignment="Center"/>
+                                <TextBox Watermark="Enter your password"
+                                         Width="300"
+                                         Name="PasswordBox"
+                                         CornerRadius="0"/>
+                                <TextBlock
+                                        Name="PasswordChack"
+                                        Margin="10 0 10 0"
+                                        VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <TextBlock 
+                                Name="Eror"
+                                HorizontalAlignment="Center"
+                                Margin="10"/>
+                        <StackPanel
+                                Margin="20"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <Button Content="Login"
+                                        Click="Login"
+                                        BorderBrush="Black"
+                                        Margin="20"/>
+                                <Button Content="Cancel"
+                                        Click="Cancel"
+                                        BorderBrush="Black"/>
+                        </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Background="#505050"/>
+                <StackPanel Grid.Column="1" Grid.Row="2"
+                            Grid.ColumnSpan="3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                        <TextBlock Name="Timers" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                </StackPanel>
+        </Grid>
+</Window>

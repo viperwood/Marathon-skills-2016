@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MarathonSkills2016.Models;
 
@@ -17,6 +18,8 @@ public partial class Myresult
     public DateTime? Dateofbirth { get; set; }
 
     public string? Email { get; set; }
+
+    public int? Runnerid { get; set; }
 
     public string? Gender { get; set; }
 

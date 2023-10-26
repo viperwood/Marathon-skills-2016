@@ -7,10 +7,10 @@ using Avalonia.Threading;
 
 namespace MarathonSkills2016;
 
-public partial class FindOutMoreInformation : Window
+public partial class CoordinatorMenu : Window
 {
     private DispatcherTimer _timer = new DispatcherTimer();
-    public FindOutMoreInformation()
+    public CoordinatorMenu()
     {
         InitializeComponent();
         _timer.Interval = TimeSpan.FromSeconds(0);
@@ -24,6 +24,7 @@ public partial class FindOutMoreInformation : Window
         Timers.Text = timerMarafon.Timer1();
     }
 
+
     private void Beack(object? sender, RoutedEventArgs e)
     {
         MainWindow mainWindow = new MainWindow();
@@ -31,10 +32,11 @@ public partial class FindOutMoreInformation : Window
         Close();
     }
 
-    private void ListFond(object? sender, RoutedEventArgs e)
+    private void Logout(object? sender, RoutedEventArgs e)
     {
-        ListOfCharities listOfCharities = new ListOfCharities();
-        listOfCharities.Show();
+        SaveUser.User.Clear();
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.Show();
         Close();
     }
 }

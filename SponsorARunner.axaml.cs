@@ -12,7 +12,6 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using MarathonSkills2016.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Timers;
 using Avalonia.Input;
 using Avalonia.Threading;
 using Timer = System.Timers.Timer;
@@ -23,8 +22,9 @@ namespace MarathonSkills2016;
 public partial class SponsorARunner : Window
 {
     private DispatcherTimer _disTimer = new DispatcherTimer();
-    private int sum = 50;
-    private int contextComboBox = 0;
+    private int _sum = 50;
+    private List<Runnerinf> _runnerinfs = Helper.Database.Runnerinfs.ToList();
+    private int _contextComboBox;
     public SponsorARunner()
     {
         InitializeComponent();
@@ -37,16 +37,15 @@ public partial class SponsorARunner : Window
         _disTimer.Interval = TimeSpan.FromSeconds(0);
         _disTimer.Tick += DispatcherTimer_Tick;
         _disTimer.Start();
-        SumText.Text = $"{sum}";
+        SumText.Text = $"{_sum}";
         SumText.KeyUp += SearchTextBoxOnKeyUp;
-        RunerComboBox.SelectionChanged += RunerComboBoxSC;
+        RunerComboBox.SelectionChanged += RunerComboBoxSel;
     }
 
-    private void RunerComboBoxSC(object? sender, SelectionChangedEventArgs e)
+    private void RunerComboBoxSel(object? sender, SelectionChangedEventArgs e)
     {
-        contextComboBox = RunerComboBox.SelectedIndex;
-        List<Runnerinf> runnerinfs = Helper.Database.Runnerinf.ToList();
-        Fond.Text = runnerinfs[contextComboBox].Sponsorname;
+        _contextComboBox = RunerComboBox.SelectedIndex;
+        Fond.Text = _runnerinfs[_contextComboBox].Fundname;
         ButtonInf.IsVisible = true;
     }
 
@@ -58,24 +57,24 @@ public partial class SponsorARunner : Window
 
     private void SearchTextBoxOnKeyUp(object? sender, EventArgs e)
     {
-        sum = Convert.ToInt32(SumText.Text);
-        if (sum < 10)
+        _sum = Convert.ToInt32(SumText.Text);
+        if (_sum < 10)
         {
-            sum = 10;
-            SumSpons.Text = $"${sum}";
+            _sum = 10;
+            SumSpons.Text = $"${_sum}";
         }
         else
         {
-            SumSpons.Text = $"${sum}";
+            SumSpons.Text = $"${_sum}";
         }
     }
     
 
     private void Namerunner()
     {
-        RunerComboBox.Items = Helper.Database.Runnerinf.Select(x => new
+        RunerComboBox.Items = _runnerinfs.Select(x => new
         {
-            Namerun = x.Lastname + " " + x.Firstname + " - " + x.Bibnumber + $" ({x.Countrycode})"
+            Namerun = $"{x.Lastname} {x.Firstname} - {x.Bibnumber} {x.Countrycode}"
         }).ToList();
     }
     
@@ -86,19 +85,19 @@ public partial class SponsorARunner : Window
     
     private void Minus(object? sender, RoutedEventArgs e)
     {
-        if (sum > 10)
+        if (_sum > 10)
         {
-            sum -= 10;
-            SumSpons.Text = $"${sum}";
-            SumText.Text = $"{sum}";
+            _sum -= 10;
+            SumSpons.Text = $"${_sum}";
+            SumText.Text = $"{_sum}";
         }
     }
     
     private void Plus(object? sender, RoutedEventArgs e)
     {
-        sum += 10;
-        SumSpons.Text = $"${sum}";
-        SumText.Text = $"{sum}";
+        _sum += 10;
+        SumSpons.Text = $"${_sum}";
+        SumText.Text = $"{_sum}";
     }
 
     private void Beack(object? sender, RoutedEventArgs e)
@@ -216,7 +215,7 @@ public partial class SponsorARunner : Window
         
         if (chak == 0)
         {
-            SponsorshipConfirmation sponsorshipConfirmation = new SponsorshipConfirmation(contextComboBox, sum);
+            SponsorshipConfirmation sponsorshipConfirmation = new SponsorshipConfirmation(_contextComboBox, _sum);
             sponsorshipConfirmation.Show();
             Close();
         }
@@ -224,7 +223,7 @@ public partial class SponsorARunner : Window
 
     private void Infowindow(object? sender, RoutedEventArgs e)
     {
-        SponsorARunnerInfo sponsorARunnerInfo = new SponsorARunnerInfo(contextComboBox);
+        SponsorARunnerInfo sponsorARunnerInfo = new SponsorARunnerInfo(_contextComboBox);
         sponsorARunnerInfo.Show();
     }
 }

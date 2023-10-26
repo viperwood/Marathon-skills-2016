@@ -1,8 +1,9 @@
 using System;
+using System.Linq;
 using System.Timers;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using System.Timers;
+using Avalonia.Media;
 using Avalonia.Threading;
 using Timer = System.Timers.Timer;
 namespace MarathonSkills2016;
@@ -10,10 +11,8 @@ namespace MarathonSkills2016;
 public partial class MainWindow : Window
 {
     private DispatcherTimer _disTimer = new DispatcherTimer();
-    private static System.Timers.Timer aTimer;
     public MainWindow()
     {
-        aTimer = new System.Timers.Timer(1000);
         InitializeComponent();
         _disTimer.Interval = TimeSpan.FromSeconds(0);
         _disTimer.Tick += DispatcherTimer_Tick;
@@ -28,7 +27,34 @@ public partial class MainWindow : Window
 
     private void IHaveStateRuner(object? sender, RoutedEventArgs e)
     {
-        
+        if (SaveUser.User.Count == 0)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
+        }
+        else
+        {
+            var users = SaveUser.User.ToList();
+            switch (users[0].Roleid.ToString())
+            {
+                case "R":
+                    RunnerMenu runnerMenu = new RunnerMenu();
+                    runnerMenu.Show();
+                    Close();
+                    break;
+                case "A":
+                    AdministratorMenu administratorMenu = new AdministratorMenu();
+                    administratorMenu.Show();
+                    Close();
+                    break;
+                case "C":
+                    CoordinatorMenu coordinatorMenu = new CoordinatorMenu();
+                    coordinatorMenu.Show();
+                    Close();
+                    break;
+            }
+        }
     }
 
     private void IHaveStateSponsor(object? sender, RoutedEventArgs e)
@@ -47,6 +73,8 @@ public partial class MainWindow : Window
 
     private void Login(object? sender, RoutedEventArgs e)
     {
-        
+        LoginWindow loginWindow = new LoginWindow();
+        loginWindow.Show();
+        Close();
     }
 }
