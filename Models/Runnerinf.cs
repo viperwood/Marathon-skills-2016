@@ -20,8 +20,8 @@ public partial class Runnerinf
     public string? Gender { get; set; }
 
     public string? Countrycode { get; set; }
-    
-    public string Fundname { get; set; } = null!;
+
+    public string? Fundname { get; set; }
 
     public string? Funddescription { get; set; }
 }

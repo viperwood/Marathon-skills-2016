@@ -78,6 +78,7 @@
                                         <Button BorderBrush="Black"
                                                 CornerRadius="10"
                                                 Height="70" Width="200"
+                                                Click="ContactButton"
                                                 Margin="10">
                                                 <TextBlock
                                                         HorizontalAlignment="Center"

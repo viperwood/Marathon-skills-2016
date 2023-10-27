@@ -20,6 +20,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/ContactsWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/CoordinatorMenu.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
@@ -33,6 +36,12 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/RegisterAsARunner.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/RegisterRunnerMenu.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/prdb/RiderProjects/MarathonSkills2016/MarathonSkills2016/RunnerMenu.axaml]

@@ -1,0 +1,216 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MarathonSkills2016.RegisterRunnerMenu"
+        MinHeight="600"
+        MinWidth="800"
+        Title="RegisterRunnerMenu">
+    <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel 
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        Background="#505050"/>
+                <StackPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"
+                            Margin="20"
+                            VerticalAlignment="Center">
+                        <StackPanel
+                                Orientation="Horizontal">
+                                <Button Margin=" 0 0 20 0"
+                                        Content="Назад"
+                                        Background="#ebebeb"/>
+                                <TextBlock Text="Marathon Skills 2016"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           FontSize="30"/>
+                        </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center">
+                        <TextBlock Text="Регистрация бегуна"
+                                   Margin="20"
+                                   TextAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock Text="Пожалуйста заполните всю информацию, чтобы зарегистрироваться в качестве бегуна"
+                                   Margin="20"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   FontSize="20"/>
+                        <StackPanel
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <StackPanel 
+                                        HorizontalAlignment="Center">
+                                        <StackPanel 
+                                                Margin="5"
+                                                Orientation="Horizontal">
+                                                <TextBlock Text="Email:"
+                                                           VerticalAlignment="Center"
+                                                           Margin="0 0 10 0"
+                                                           TextAlignment="Center"/>
+                                                <TextBox CornerRadius="0"
+                                                         Watermark="Email"
+                                                         Width="200"/>
+                                        </StackPanel>
+                                        <StackPanel 
+                                                Margin="5"
+                                                Orientation="Horizontal">
+                                                <TextBlock Text="Пароль:"
+                                                           VerticalAlignment="Center"
+                                                           Margin="0 0 10 0"
+                                                           TextAlignment="Center"/>
+                                                <TextBox CornerRadius="0"
+                                                         Watermark="Пароль"
+                                                         Width="200"/>
+                                        </StackPanel>
+                                        <StackPanel 
+                                                Margin="5"
+                                                Orientation="Horizontal">
+                                                <TextBlock Text="Повторить пароль:"
+                                                           VerticalAlignment="Center"
+                                                           Margin="0 0 10 0"
+                                                           TextAlignment="Center"/>
+                                                <TextBox CornerRadius="0"
+                                                         Watermark="Повторить пароль"
+                                                         Width="200"/>
+                                        </StackPanel>
+                                        <StackPanel 
+                                                Margin="5"
+                                                Orientation="Horizontal">
+                                                <TextBlock Text="Имя:"
+                                                           VerticalAlignment="Center"
+                                                           Margin="0 0 10 0"
+                                                           TextAlignment="Center"/>
+                                                <TextBox CornerRadius="0"
+                                                         Watermark="Имя"
+                                                         Width="200"/>
+                                        </StackPanel>
+                                        <StackPanel 
+                                                Margin="5"
+                                                Orientation="Horizontal">
+                                                <TextBlock Text="Фамилия:"
+                                                           VerticalAlignment="Center"
+                                                           Margin="0 0 10 0"
+                                                           TextAlignment="Center"/>
+                                                <TextBox CornerRadius="0"
+                                                         Watermark="Фамилия"
+                                                         Width="200"/>
+                                        </StackPanel>
+                                        <StackPanel 
+                                                Margin="10"
+                                                Orientation="Horizontal">
+                                                <TextBlock Text="Пол:"
+                                                           VerticalAlignment="Center"
+                                                           Margin="0 0 10 0"
+                                                           TextAlignment="Center"/>
+                                                <ComboBox
+                                                        Width="200"
+                                                        CornerRadius="0"
+                                                        SelectedIndex="0">
+                                                        <ComboBoxItem>
+                                                                <TextBlock Text="Мужской"/>
+                                                        </ComboBoxItem>
+                                                        <ComboBoxItem>
+                                                                <TextBlock Text="Женский"/>
+                                                        </ComboBoxItem>
+                                                </ComboBox>
+                                        </StackPanel>
+                                </StackPanel>
+                                <StackPanel 
+                                        HorizontalAlignment="Center">
+                                        <Border
+                                                Width="90" Height="110"
+                                                HorizontalAlignment="Right"
+                                                BorderBrush="Gray"
+                                                Name="ImageServise"
+                                                Background="DarkGray"
+                                                BorderThickness="1">
+                                                <TextBlock
+                                                        Text="Фото"
+                                                        Name="ImagePathTextBox"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"/>
+                                        </Border>
+                                        <StackPanel 
+                                                Margin="20 10 0 5"
+                                                Orientation="Horizontal">
+                                                <TextBlock
+                                                        HorizontalAlignment="Left"
+                                                        Text="Фото файл:"/>
+                                        </StackPanel>
+                                        <StackPanel 
+                                                HorizontalAlignment="Right"
+                                                Margin="10 0 0 0"
+                                                Orientation="Horizontal">
+                                                <TextBox CornerRadius="0"
+                                                         Watermark="Rhoto_logo.jpg"
+                                                         Width="150"/>
+                                                <Button Content="Просмотр..."
+                                                        BorderBrush="Black"
+                                                        BorderThickness="1"
+                                                           VerticalAlignment="Center"
+                                                           Margin="10 0 0 0"/>
+                                        </StackPanel>
+                                        <StackPanel 
+                                                Margin="0 10 0 0"
+                                                Orientation="Horizontal">
+                                                <TextBlock Text="Дата рождения:"
+                                                           VerticalAlignment="Center"
+                                                           Margin="0 0 10 0"
+                                                           TextAlignment="Center"/>
+                                                <TextBox CornerRadius="0"
+                                                         Watermark="1978-07-16"
+                                                         Width="150"/>
+                                        </StackPanel>
+                                        <StackPanel 
+                                                Margin="0 10 0 0"
+                                                Orientation="Horizontal">
+                                                <TextBlock Text="Страна:"
+                                                           VerticalAlignment="Center"
+                                                           Margin="0 0 10 0"
+                                                           TextAlignment="Center"/>
+                                                <ComboBox
+                                                        CornerRadius="0"
+                                                        Width="150">
+                                                        <ComboBox.ItemTemplate>
+                                                                <DataTemplate>
+                                                                        <TextBlock Text="{Binding CountryRunner}"/>
+                                                                </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                        </StackPanel>
+                                </StackPanel>
+                        </StackPanel>
+                        <StackPanel
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <Button Content="Регистрация"
+                                        Margin="10"/>
+                                <Button Content="Отмена"
+                                        Margin="10"/>
+                        </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Background="#505050"/>
+                <StackPanel Grid.Column="1" Grid.Row="2"
+                            Grid.ColumnSpan="3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                        <TextBlock Name="Timers" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                </StackPanel>
+        </Grid>
+</Window>

@@ -15,6 +15,8 @@ public partial class Runner
 
     public string Countrycode { get; set; } = null!;
 
+    public string? Imagerunner { get; set; }
+
     public virtual Country CountrycodeNavigation { get; set; } = null!;
 
     public virtual User EmailNavigation { get; set; } = null!;

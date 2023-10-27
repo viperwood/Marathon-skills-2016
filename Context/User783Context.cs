@@ -18,7 +18,7 @@ public partial class User783Context : DbContext
 
     public virtual DbSet<Charity> Charities { get; set; }
 
-    public virtual DbSet<Charityfoundation> Charityfoundations { get; set; }
+    public virtual DbSet<Charityfoundation> Charityfoundation { get; set; }
 
     public virtual DbSet<Country> Countries { get; set; }
 
@@ -44,7 +44,7 @@ public partial class User783Context : DbContext
 
     public virtual DbSet<Runner> Runners { get; set; }
 
-    public virtual DbSet<Runnerinf> Runnerinfs { get; set; }
+    public virtual DbSet<Runnerinf> Runnerinf { get; set; }
 
     public virtual DbSet<Sponsorship> Sponsorships { get; set; }
 
@@ -53,8 +53,8 @@ public partial class User783Context : DbContext
     public virtual DbSet<Volunteer> Volunteers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https: //go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Database = user783; Host = 192.168.0.4; Username = user783; Password = 49242");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseNpgsql("Username = user783; Database = user783; Password = 49242; Host = 192.168.0.4");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -229,41 +229,6 @@ public partial class User783Context : DbContext
                 .HasColumnName("registrationtimestamp");
             entity.Property(e => e.Runnerid).HasColumnName("runnerid");
         });
-        
-        modelBuilder.Entity<Runnerinf>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("runnerinf", "Test2");
-            
-            entity.Property(e => e.Runnerid).HasColumnName("runnerid");
-            entity.Property(e => e.Email)
-                .HasMaxLength(100)
-                .HasColumnName("email");
-            entity.Property(e => e.Gender)
-                .HasMaxLength(10)
-                .HasColumnName("gender");
-            entity.Property(e => e.Firstname)
-                .HasMaxLength(80)
-                .HasColumnName("firstname");
-            entity.Property(e => e.Lastname)
-                .HasMaxLength(80)
-                .HasColumnName("lastname");
-            entity.Property(e => e.Bibnumber).HasColumnName("bibnumber");
-            entity.Property(e => e.Countrycode)
-                .HasMaxLength(3)
-                .IsFixedLength()
-                .HasColumnName("countrycode");
-            entity.Property(e => e.Sponsorname)
-                .HasMaxLength(150)
-                .HasColumnName("sponsorname");
-            entity.Property(e => e.Funddescription)
-                .HasMaxLength(2000)
-                .HasColumnName("funddescription");
-            entity.Property(e => e.Fundname)
-                .HasMaxLength(100)
-                .HasColumnName("fundname");
-        });
 
         modelBuilder.Entity<Racekitoption>(entity =>
         {
@@ -400,6 +365,9 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Gender)
                 .HasMaxLength(10)
                 .HasColumnName("gender");
+            entity.Property(e => e.Imagerunner)
+                .HasMaxLength(100)
+                .HasColumnName("imagerunner");
 
             entity.HasOne(d => d.CountrycodeNavigation).WithMany(p => p.Runners)
                 .HasForeignKey(d => d.Countrycode)
@@ -415,6 +383,41 @@ public partial class User783Context : DbContext
                 .HasForeignKey(d => d.Gender)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("runner_gender_fkey");
+        });
+
+        modelBuilder.Entity<Runnerinf>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("runnerinf", "Test2");
+            
+            entity.Property(e => e.Runnerid).HasColumnName("runnerid");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .HasColumnName("email");
+            entity.Property(e => e.Gender)
+                .HasMaxLength(10)
+                .HasColumnName("gender");
+            entity.Property(e => e.Firstname)
+                .HasMaxLength(80)
+                .HasColumnName("firstname");
+            entity.Property(e => e.Lastname)
+                .HasMaxLength(80)
+                .HasColumnName("lastname");
+            entity.Property(e => e.Bibnumber).HasColumnName("bibnumber");
+            entity.Property(e => e.Countrycode)
+                .HasMaxLength(3)
+                .IsFixedLength()
+                .HasColumnName("countrycode");
+            entity.Property(e => e.Sponsorname)
+                .HasMaxLength(150)
+                .HasColumnName("sponsorname");
+            entity.Property(e => e.Funddescription)
+                .HasMaxLength(2000)
+                .HasColumnName("funddescription");
+            entity.Property(e => e.Fundname)
+                .HasMaxLength(100)
+                .HasColumnName("fundname");
         });
 
         modelBuilder.Entity<Sponsorship>(entity =>

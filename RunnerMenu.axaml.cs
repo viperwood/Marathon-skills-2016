@@ -38,4 +38,10 @@ public partial class RunnerMenu : Window
         mainWindow.Show();
         Close();
     }
+
+    private void ContactButton(object? sender, RoutedEventArgs e)
+    {
+        ContactsWindow contactsWindow = new ContactsWindow();
+        contactsWindow.Show();
+    }
 }

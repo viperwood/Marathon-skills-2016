@@ -23,7 +23,7 @@ public partial class SponsorARunner : Window
 {
     private DispatcherTimer _disTimer = new DispatcherTimer();
     private int _sum = 50;
-    private List<Runnerinf> _runnerinfs = Helper.Database.Runnerinfs.ToList();
+    private List<Runnerinf> _runnerinfs = Helper.Database.Runnerinf.ToList();
     private int _contextComboBox;
     public SponsorARunner()
     {

@@ -27,34 +27,9 @@ public partial class MainWindow : Window
 
     private void IHaveStateRuner(object? sender, RoutedEventArgs e)
     {
-        if (SaveUser.User.Count == 0)
-        {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
-            Close();
-        }
-        else
-        {
-            var users = SaveUser.User.ToList();
-            switch (users[0].Roleid.ToString())
-            {
-                case "R":
-                    RunnerMenu runnerMenu = new RunnerMenu();
-                    runnerMenu.Show();
-                    Close();
-                    break;
-                case "A":
-                    AdministratorMenu administratorMenu = new AdministratorMenu();
-                    administratorMenu.Show();
-                    Close();
-                    break;
-                case "C":
-                    CoordinatorMenu coordinatorMenu = new CoordinatorMenu();
-                    coordinatorMenu.Show();
-                    Close();
-                    break;
-            }
-        }
+        RegisterAsARunner registerAsARunner = new RegisterAsARunner();
+        registerAsARunner.Show();
+        Close();
     }
 
     private void IHaveStateSponsor(object? sender, RoutedEventArgs e)
