@@ -63,7 +63,14 @@
                                                            TextAlignment="Center"/>
                                                 <TextBox CornerRadius="0"
                                                          Watermark="Email"
+                                                         Name="_email"
                                                          Width="200"/>
+                                                <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        Name="_emailchack"
+                                                        Margin="10 0  0 0"
+                                                        Foreground="Crimson"
+                                                        Text=""/>
                                         </StackPanel>
                                         <StackPanel 
                                                 Margin="5"
@@ -74,7 +81,14 @@
                                                            TextAlignment="Center"/>
                                                 <TextBox CornerRadius="0"
                                                          Watermark="Пароль"
+                                                         Name="_password"
                                                          Width="200"/>
+                                                <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        Margin="10 0  0 0"
+                                                        Foreground="Crimson"
+                                                        Name="_passwordchack"
+                                                        Text=""/>
                                         </StackPanel>
                                         <StackPanel 
                                                 Margin="5"
@@ -85,7 +99,14 @@
                                                            TextAlignment="Center"/>
                                                 <TextBox CornerRadius="0"
                                                          Watermark="Повторить пароль"
+                                                         Name="_password2"
                                                          Width="200"/>
+                                                <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        Margin="10 0  0 0"
+                                                        Foreground="Crimson"
+                                                        Name="_passwordchack2"
+                                                        Text=""/>
                                         </StackPanel>
                                         <StackPanel 
                                                 Margin="5"
@@ -96,7 +117,14 @@
                                                            TextAlignment="Center"/>
                                                 <TextBox CornerRadius="0"
                                                          Watermark="Имя"
+                                                         Name="_name"
                                                          Width="200"/>
+                                                <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        Margin="10 0  0 0"
+                                                        Foreground="Crimson"
+                                                        Name="_namechack"
+                                                        Text=""/>
                                         </StackPanel>
                                         <StackPanel 
                                                 Margin="5"
@@ -106,8 +134,15 @@
                                                            Margin="0 0 10 0"
                                                            TextAlignment="Center"/>
                                                 <TextBox CornerRadius="0"
+                                                         Name="_fam"
                                                          Watermark="Фамилия"
                                                          Width="200"/>
+                                                <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        Margin="10 0  0 0"
+                                                        Foreground="Crimson"
+                                                        Name="_famchack"
+                                                        Text=""/>
                                         </StackPanel>
                                         <StackPanel 
                                                 Margin="10"
@@ -132,17 +167,21 @@
                                 <StackPanel 
                                         HorizontalAlignment="Center">
                                         <Border
-                                                Width="90" Height="110"
                                                 HorizontalAlignment="Right"
                                                 BorderBrush="Gray"
-                                                Name="ImageServise"
                                                 Background="DarkGray"
                                                 BorderThickness="1">
-                                                <TextBlock
-                                                        Text="Фото"
-                                                        Name="ImagePathTextBox"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"/>
+                                                <StackPanel
+                                                        MinWidth="90" MinHeight="90">
+                                                        <TextBlock 
+                                                                Name="PhotoText"
+                                                                HorizontalAlignment="Center"
+                                                                Text="Фото"/>
+                                                        <Image
+                                                                MaxWidth="150" MaxHeight="150"
+                                                                Name="ImageServise">
+                                                        </Image>
+                                                </StackPanel>
                                         </Border>
                                         <StackPanel 
                                                 Margin="20 10 0 5"
@@ -157,23 +196,38 @@
                                                 Orientation="Horizontal">
                                                 <TextBox CornerRadius="0"
                                                          Watermark="Rhoto_logo.jpg"
+                                                         Name="_path"
                                                          Width="150"/>
                                                 <Button Content="Просмотр..."
                                                         BorderBrush="Black"
+                                                        Click="SelectFileButton_Click"
                                                         BorderThickness="1"
                                                            VerticalAlignment="Center"
                                                            Margin="10 0 0 0"/>
+                                                <TextBlock
+                                                        Name="_pathchack"
+                                                        VerticalAlignment="Center"
+                                                        Margin="10 0  0 0"
+                                                        Foreground="Crimson"
+                                                        Text=""/>
                                         </StackPanel>
                                         <StackPanel 
                                                 Margin="0 10 0 0"
                                                 Orientation="Horizontal">
                                                 <TextBlock Text="Дата рождения:"
+                                                           Name="_date"
                                                            VerticalAlignment="Center"
                                                            Margin="0 0 10 0"
                                                            TextAlignment="Center"/>
                                                 <TextBox CornerRadius="0"
                                                          Watermark="1978-07-16"
                                                          Width="150"/>
+                                                <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        Margin="10 0  0 0"
+                                                        Name="_datechack"
+                                                        Foreground="Crimson"
+                                                        Text=""/>
                                         </StackPanel>
                                         <StackPanel 
                                                 Margin="0 10 0 0"
@@ -191,6 +245,12 @@
                                                                 </DataTemplate>
                                                         </ComboBox.ItemTemplate>
                                                 </ComboBox>
+                                                <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        Margin="10 0  0 0"
+                                                        Foreground="Crimson"
+                                                        Name="contrychack"
+                                                        Text=""/>
                                         </StackPanel>
                                 </StackPanel>
                         </StackPanel>
@@ -198,6 +258,7 @@
                                 HorizontalAlignment="Center"
                                 Orientation="Horizontal">
                                 <Button Content="Регистрация"
+                                        Click="SaveButton"
                                         Margin="10"/>
                                 <Button Content="Отмена"
                                         Margin="10"/>

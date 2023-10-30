@@ -25,7 +25,7 @@ public partial class SponsorshipConfirmation : Window
         _timer.Tick += TimerTick;
         _timer.Start();
         InitializeComponent();
-        List<Runnerinf> runnerinfs = Helper.Database.Runnerinf.ToList();
+        List<Runnerinf> runnerinfs = Helper.Database.Runnerinfs.ToList();
         NameRunner.Text = (runnerinfs[contextComboBoxId].Lastname + " " + runnerinfs[contextComboBoxId].Firstname + "(" + runnerinfs[contextComboBoxId].Bibnumber + ") из " + runnerinfs[contextComboBoxId].Countrycode).ToString();
         CostRunner.Text = $"${sum.ToString()}";
         Fond.Text = runnerinfs[contextComboBoxId].Sponsorname;

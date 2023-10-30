@@ -66,6 +66,8 @@ public partial class RegisterAsARunner : Window
 
     private void NewMember(object? sender, RoutedEventArgs e)
     {
-        
+        RegisterRunnerMenu registerRunnerMenu = new RegisterRunnerMenu();
+        registerRunnerMenu.Show();
+        Close();
     }
 }
