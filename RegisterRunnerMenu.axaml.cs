@@ -16,16 +16,28 @@ namespace MarathonSkills2016;
 
 public partial class RegisterRunnerMenu : Window
 {
-    public Runner _runner;
+    private Runner _runners;
+    private User _user;
+    private List<Country> countriestable = Helper.Database.Countries.ToList();
     
     private DispatcherTimer _timer = new DispatcherTimer();
     public RegisterRunnerMenu()
     {
-        _runner = new Runner();
+        _runners = new Runner();
+        _user = new User();
         InitializeComponent();
         _timer.Interval = TimeSpan.FromSeconds(0);
         _timer.Tick += TimerTick;
         _timer.Start();
+        CountryBox();
+    }
+
+    private void CountryBox()
+    {
+        _contry.Items = countriestable.Select(x => new
+        {
+            CountryRunner = x.Countryname
+        }).ToList();
     }
 
     private void TimerTick(object? sender, EventArgs e)
@@ -73,31 +85,22 @@ public partial class RegisterRunnerMenu : Window
             }
 
             _path.Text = imageName;
-            _runner.Imagerunner = $"Images\\{imageName}";
         }
     }
-
+    /*Логика проверки введеных значение*/
     private void SaveButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
+        byte i = 0;
         if (_email.Text != null && _email.Text != "")
         {
-            _emailchack.Text = "";
-            if (_password.Text != null && _password.Text != "")
+            if (_email.Text.IndexOf('@') != -1 && _email.Text.IndexOf('.') != -1 && _email.Text.IndexOf('@') < _email.Text.LastIndexOf('.'))
             {
-                _passwordchack.Text = "";
-                if (_password2.Text != null && _password2.Text != "")
-                {
-                    _passwordchack2.Text = "";
-            
-                }
-                else
-                {
-                    _passwordchack2.Text = "Все поля обязательны";
-                }
+                _emailchack.Text = "";
+                i += 1;
             }
             else
             {
-                _passwordchack.Text = "Все поля обязательны";
+                _emailchack.Text = "Это не адрес эллектронной почты";
             }
         }
         else
@@ -105,16 +108,173 @@ public partial class RegisterRunnerMenu : Window
             _emailchack.Text = "Все поля обязательны";
         }
         
+        if (_password.Text != null && _password.Text != "")
+        {
+            if (_password.Text.Length > 5)
+            {
+                
+                if (_password.Text.IndexOf('!') != -1 ||
+                    _password.Text.IndexOf('@') != -1 ||
+                    _password.Text.IndexOf('#') != -1 ||
+                    _password.Text.IndexOf('$') != -1 ||
+                    _password.Text.IndexOf('%') != -1 ||
+                    _password.Text.IndexOf('^') != -1)
+                {
+                    if (_password.Text.IndexOf('0') != -1 ||
+                        _password.Text.IndexOf('1') != -1 ||
+                        _password.Text.IndexOf('2') != -1 ||
+                        _password.Text.IndexOf('3') != -1 ||
+                        _password.Text.IndexOf('4') != -1 ||
+                        _password.Text.IndexOf('5') != -1 ||
+                        _password.Text.IndexOf('6') != -1 ||
+                        _password.Text.IndexOf('7') != -1 ||
+                        _password.Text.IndexOf('8') != -1 ||
+                        _password.Text.IndexOf('9') != -1)
+                    {
+                        if (_password.Text.Any(c => char.IsLetter(c)) && _password.Text == _password.Text.ToUpper())
+                        {
+                        
+                            _passwordchack.Text = "";
+                            i += 1;
+                        }
+                        else
+                        {
+                            _passwordchack.Text = "Пароль должен содержать прописную букву";
+                        }
+                    }
+                    else
+                    {
+                        _passwordchack.Text = "Пароль должен содержать цифру";
+                    }
+                }
+                else
+                {
+                    _passwordchack.Text = "Пароль должен содержать один из следующих символов: ! @ # $ % ^";
+                }
+            }
+            else
+            {
+                _passwordchack.Text = "Пароль должен быть бльше 5 символов";
+            }
+        }
+        else
+        {
+            _passwordchack.Text = "Все поля обязательны";
+        }
         
+        if (_password2.Text != null && _password2.Text != "")
+        {
+            _passwordchack2.Text = "";
+            i += 1;
+        }
+        else
+        {
+            _passwordchack2.Text = "Все поля обязательны";
+        }
         
+        if (_name.Text != null && _name.Text != "")
+        {
+            _namechack.Text = "";
+            i += 1;
+        }
+        else
+        {
+            _namechack.Text = "Все поля обязательны";
+        }
         
+        if (_fam.Text != null && _fam.Text != "")
+        {
+            _famchack.Text = "";
+            i += 1;
+        }
+        else
+        {
+            _famchack.Text = "Все поля обязательны";
+        }
         
+        if (_path.Text != null && _path.Text != "")
+        {
+            _pathchack.Text = "";
+            i += 1;
+        }
+        else
+        {
+            _pathchack.Text = "Все поля обязательны";
+        }
         
-        //Подгрузка в базу данных
-        Helper.Database.Add(_runner);
-        //Сохранение базы данных
-        Helper.Database.SaveChanges();
-        //Закрыть
+        if (_date.Text != null && _date.Text != "")
+        {
+            DateTime _datenow = DateTime.Now ;
+            if (Convert.ToDateTime(_date.Text).AddYears(10) <= _datenow)
+            {
+                _datechack.Text = "";
+                i += 1;
+            }
+            else
+            {
+                _datechack.Text = "Вы ввили не существующую дату или вым меньше 10 лет";
+            }
+        }
+        else
+        {
+            _datechack.Text = "Все поля обязательны";
+        }
+        
+        if (_contry.SelectedIndex != -1)
+        {
+            contrychack.Text = "";
+            i += 1;
+        }
+        else
+        {
+            contrychack.Text = "Все поля обязательны";
+        }
+
+        if (i == 8)
+        {
+            
+            if (_password.Text == _password2.Text)
+            {
+                _runners.Imagerunner = $"Images\\{_path}";
+                _runners.Email = _email.Text;
+                _runners.Gender = _gender.SelectedIndex == 0 ? ("Male") : ("Female");
+                _user.Email = _email.Text;
+                _user.Password = _password.Text;
+                _user.Firstname = _name.Text;
+                _user.Roleid = 'R';
+                _user.Lastname = _fam.Text;
+                _runners.Dateofbirth = Convert.ToDateTime(_date.Text);
+                _runners.Countrycode = countriestable[_contry.SelectedIndex].Countrycode;
+                //Подгрузка в базу данных
+                Helper.Database.Add(_runners);
+                Helper.Database.Add(_user);
+                //Сохранение базы данных
+                Helper.Database.SaveChanges();
+                //Закрыть
+                RegisterAsARunner registerAsARunner = new RegisterAsARunner();
+                registerAsARunner.Show();
+                Close();
+            }
+            else
+            {
+                _passwordchack2.Text = "Пароли не совпадают";
+                _passwordchack.Text = "Пароли не совпадают";
+            }
+            
+        }
+    }
+
+    private void Beack(object? sender, RoutedEventArgs e)
+    {
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.Show();
+        Close();
+    }
+
+    private void Cancel(object? sender, RoutedEventArgs e)
+    {
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.Show();
         Close();
     }
 }

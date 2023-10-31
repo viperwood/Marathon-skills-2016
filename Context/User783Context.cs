@@ -42,7 +42,7 @@ public partial class User783Context : DbContext
 
     public virtual DbSet<Role> Roles { get; set; }
 
-    public virtual DbSet<Runner?> Runners { get; set; }
+    public virtual DbSet<Runner> Runners { get; set; }
 
     public virtual DbSet<Runnerinf> Runnerinfs { get; set; }
 

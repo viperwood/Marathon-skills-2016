@@ -7,7 +7,7 @@ public partial class Runner
 {
     public int Runnerid { get; set; }
 
-    public string Email { get; set; } = null!;
+    public string? Email { get; set; } = null!;
 
     public string Gender { get; set; } = null!;
 
