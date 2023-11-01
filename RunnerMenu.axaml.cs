@@ -44,4 +44,11 @@ public partial class RunnerMenu : Window
         ContactsWindow contactsWindow = new ContactsWindow();
         contactsWindow.Show();
     }
+
+    private void RegisterAsMarafon(object? sender, RoutedEventArgs e)
+    {
+        RegisterForAnEvent registerForAnEvent = new RegisterForAnEvent();
+        registerForAnEvent.Show();
+        Close();
+    }
 }

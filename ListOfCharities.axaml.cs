@@ -30,11 +30,11 @@ public partial class ListOfCharities : Window
 
     private void ListFond()
     {
-        List<Charityfoundation> runnerinfs = Helper.Database.Charityfoundations.ToList();
-        ListBoxFond.Items = runnerinfs.Select(x => new
+        List<Charity> charities = Helper.Database.Charities.ToList();
+        ListBoxFond.Items = charities.Select(x => new
         {
-            NameFond = x.Fundname,
-            DescriptionFond = x.Funddescription
+            NameFond = x.Charityname,
+            DescriptionFond = x.Charitydescription
         }).ToList();
     }
 

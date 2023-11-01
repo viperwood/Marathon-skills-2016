@@ -60,6 +60,7 @@
                                         <Button Content="Регистрация на марафон"
                                                 BorderBrush="Black"
                                                 CornerRadius="10"
+                                                Click="RegisterAsMarafon"
                                                 Height="70" Width="200" 
                                                 VerticalContentAlignment="Center"
                                                 HorizontalContentAlignment="Center"

@@ -72,6 +72,8 @@ public partial class LoginWindow : Window
                         if (users.Count == 1)
                         {
                             SaveUser.User = users.ToList();
+                            var userinf = Helper.Database.Runners.Where(x => x.Email == EmailBox.Text).ToList();
+                            SaveUser.Userinf = userinf.ToList();
                             switch (users[0].Roleid.ToString())
                             {
                                 case "R":

@@ -18,8 +18,6 @@ public partial class User783Context : DbContext
 
     public virtual DbSet<Charity> Charities { get; set; }
 
-    public virtual DbSet<Charityfoundation> Charityfoundations { get; set; }
-
     public virtual DbSet<Country> Countries { get; set; }
 
     public virtual DbSet<Event> Events { get; set; }
@@ -54,7 +52,7 @@ public partial class User783Context : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host = 192.168.0.4; Password = 49242; Username = user783; Database = user783");
+        => optionsBuilder.UseNpgsql("Host = 192.168.0.4; Username = user783; Password = 49242; Database = user783");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -74,21 +72,6 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Charityname)
                 .HasMaxLength(100)
                 .HasColumnName("charityname");
-        });
-
-        modelBuilder.Entity<Charityfoundation>(entity =>
-        {
-            entity.HasKey(e => e.Fundid).HasName("charityfoundation_pkey");
-
-            entity.ToTable("charityfoundation", "Test2");
-
-            entity.Property(e => e.Fundid).HasColumnName("fundid");
-            entity.Property(e => e.Funddescription)
-                .HasMaxLength(2000)
-                .HasColumnName("funddescription");
-            entity.Property(e => e.Fundname)
-                .HasMaxLength(100)
-                .HasColumnName("fundname");
         });
 
         modelBuilder.Entity<Country>(entity =>
@@ -392,6 +375,16 @@ public partial class User783Context : DbContext
                 .ToView("runnerinf", "Test2");
 
             entity.Property(e => e.Bibnumber).HasColumnName("bibnumber");
+            entity.Property(e => e.Charitydescription)
+                .HasMaxLength(2000)
+                .HasColumnName("charitydescription");
+            entity.Property(e => e.Charityid).HasColumnName("charityid");
+            entity.Property(e => e.Charitylogo)
+                .HasMaxLength(50)
+                .HasColumnName("charitylogo");
+            entity.Property(e => e.Charityname)
+                .HasMaxLength(100)
+                .HasColumnName("charityname");
             entity.Property(e => e.Countrycode)
                 .HasMaxLength(3)
                 .IsFixedLength()
@@ -402,12 +395,6 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Firstname)
                 .HasMaxLength(80)
                 .HasColumnName("firstname");
-            entity.Property(e => e.Funddescription)
-                .HasMaxLength(2000)
-                .HasColumnName("funddescription");
-            entity.Property(e => e.Fundname)
-                .HasMaxLength(100)
-                .HasColumnName("fundname");
             entity.Property(e => e.Gender)
                 .HasMaxLength(10)
                 .HasColumnName("gender");
@@ -430,15 +417,10 @@ public partial class User783Context : DbContext
             entity.Property(e => e.Amount)
                 .HasPrecision(10, 2)
                 .HasColumnName("amount");
-            entity.Property(e => e.Fundid).HasColumnName("fundid");
             entity.Property(e => e.Registrationid).HasColumnName("registrationid");
             entity.Property(e => e.Sponsorname)
                 .HasMaxLength(150)
                 .HasColumnName("sponsorname");
-
-            entity.HasOne(d => d.Fund).WithMany(p => p.Sponsorships)
-                .HasForeignKey(d => d.Fundid)
-                .HasConstraintName("sponsorship_fundid_fkey");
 
             entity.HasOne(d => d.Registration).WithMany(p => p.Sponsorships)
                 .HasForeignKey(d => d.Registrationid)

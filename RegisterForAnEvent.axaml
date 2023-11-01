@@ -105,15 +105,30 @@
                                                         </ComboBox.ItemTemplate>
                                                 </ComboBox>
                                         </StackPanel>
+                                        <TextBlock Text=""
+                                                   Margin="5"
+                                                   Width="200"
+                                                   Name="Varning4"
+                                                   Foreground="Crimson"
+                                                   TextWrapping="Wrap"
+                                                   TextAlignment="Center"/>
                                         <StackPanel
                                                 Margin="0 10 0 0"
                                                 Orientation="Horizontal">
                                                 <TextBlock Text="Сумма взноса: "
                                                            VerticalAlignment="Center"/>
                                                 <TextBox CornerRadius="0" 
+                                                         Name="ContributionSum"
                                                          Watermark="$500"
                                                          Width="150"/>
                                         </StackPanel>
+                                        <TextBlock Text=""
+                                                   Margin="5"
+                                                   Width="200"
+                                                   Name="Varning3"
+                                                   Foreground="Crimson"
+                                                   TextWrapping="Wrap"
+                                                   TextAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel 
                                         HorizontalAlignment="Center">
@@ -122,7 +137,8 @@
                                                    TextAlignment="Center"
                                                    FontSize="20"/>
                                         <RadioButton 
-                                                IsChecked="{Binding Option1Enabled }"
+                                                Name="rad1"
+                                                Click="option1"
                                                 GroupName="1">
                                                 <StackPanel
                                                         Orientation="Horizontal">
@@ -133,17 +149,19 @@
                                                 </StackPanel>
                                         </RadioButton>
                                         <RadioButton 
-                                                IsChecked="{Binding Option2Enabled }"
+                                                Name="rad2"
+                                                Click="option2"
                                                 GroupName="1">
                                                 <StackPanel
                                                         Orientation="Horizontal">
-                                                        <TextBlock Text="Вариант C ($20): "/>
+                                                        <TextBlock Text="Вариант B ($20): "/>
                                                         <TextBlock TextWrapping="Wrap"
                                                                    Text="Вариант A + бейсболка + бутылка воды."/>
                                                 </StackPanel>
                                         </RadioButton>
                                         <RadioButton
-                                                IsChecked="{Binding Option3Enabled }"
+                                                Name="rad3"
+                                                Click="option3"
                                                 GroupName="1">
                                                 <StackPanel
                                                         Orientation="Horizontal">
@@ -152,6 +170,14 @@
                                                                    Text="Вариант B + Футболка + сувинирный буклет."/>
                                                 </StackPanel>
                                         </RadioButton>  
+                                        <TextBlock Text="* Выбор варианта обязателен!"
+                                                   Margin="5"
+                                                   Width="200"
+                                                   Name="Varning2"
+                                                   IsVisible="False"
+                                                   Foreground="Crimson"
+                                                   TextWrapping="Wrap"
+                                                   TextAlignment="Center"/>
                                         <TextBlock Text="Регистрационный взнос"
                                                    Margin="20"
                                                    TextAlignment="Center"

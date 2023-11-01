@@ -21,7 +21,11 @@ public partial class Runnerinf
 
     public string? Countrycode { get; set; }
 
-    public string? Fundname { get; set; }
+    public string? Charityname { get; set; }
 
-    public string? Funddescription { get; set; }
+    public string? Charitydescription { get; set; }
+
+    public string? Charitylogo { get; set; }
+
+    public int? Charityid { get; set; }
 }

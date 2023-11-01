@@ -17,7 +17,7 @@ public partial class SponsorARunnerInfo : Window
     {
         InitializeComponent();
         List<Runnerinf> runnerinfs = Helper.Database.Runnerinfs.ToList();
-        NameFond.Text = runnerinfs[contextComboBoxId].Fundname;
-        Description.Text = runnerinfs[contextComboBoxId].Funddescription;
+        NameFond.Text = runnerinfs[contextComboBoxId].Charityname;
+        Description.Text = runnerinfs[contextComboBoxId].Charitydescription;
     }
 }

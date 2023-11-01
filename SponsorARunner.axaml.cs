@@ -46,7 +46,7 @@ public partial class SponsorARunner : Window
     private void RunerComboBoxSel(object? sender, SelectionChangedEventArgs e)
     {
         _contextComboBox = RunerComboBox.SelectedIndex;
-        Fond.Text = _runnerinfs[_contextComboBox].Fundname;
+        Fond.Text = _runnerinfs[_contextComboBox].Charityname;
         ButtonInf.IsVisible = true;
     }
 

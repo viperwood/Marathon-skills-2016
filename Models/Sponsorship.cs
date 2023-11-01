@@ -13,9 +13,5 @@ public partial class Sponsorship
 
     public decimal Amount { get; set; }
 
-    public int? Fundid { get; set; }
-
-    public virtual Charityfoundation? Fund { get; set; }
-
     public virtual Registration Registration { get; set; } = null!;
 }
