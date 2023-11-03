@@ -14,13 +14,13 @@ namespace MarathonSkills2016;
 public partial class RegisterForAnEvent : Window
 {
     private DispatcherTimer _timer = new DispatcherTimer();
-    private int cost = 0;
-    private byte buf = 0;
+    private int cost;
+    private byte buf;
     private Registration _registration;
-    private bool v1 = false;
-    private bool v2 = false;
-    private bool v3 = false;
-    private byte result = 0;
+    private bool v1;
+    private bool v2;
+    private bool v3;
+    private byte result;
     public RegisterForAnEvent()
     {
         InitializeComponent();
@@ -61,11 +61,13 @@ public partial class RegisterForAnEvent : Window
 
     private void LoadDate()
     {
+        _registration = new Registration();
         var userinf = SaveUser.Userinf.ToList();
         _registration.Runnerid = userinf[0].Runnerid;
         _registration.Registrationtimestamp = DateTime.Now;
         _registration.Registrationstatusid = 1;
         _registration.Cost = result;
+        _registration.Registrationid = Helper.Database.Registrations.Count() + 1;
         _registration.Charityid = FondBox.SelectedIndex;
         _registration.Sponsorshiptarget = Convert.ToInt32(ContributionSum.Text);
     }
@@ -123,29 +125,32 @@ public partial class RegisterForAnEvent : Window
         {
             if (v1 == true)
             {
-                _registration = new Registration();
-                _registration.Racekitoptionid = 'A';
                 LoadDate();
-                Helper.Database.Add(_registration);
-                Helper.Database.SaveChanges();
+                _registration.Racekitoptionid = 'A';
+                LoadInDatabase();
+
             }
             if (v2 == true)
             {
-                _registration = new Registration();
-                _registration.Racekitoptionid = 'B';
                 LoadDate();
-                Helper.Database.Add(_registration);
-                Helper.Database.SaveChanges();
+                _registration.Racekitoptionid = 'B';
+                LoadInDatabase();
             }
             if (v3 == true)
             {
-                _registration = new Registration();
-                _registration.Racekitoptionid = 'C';
                 LoadDate();
-                Helper.Database.Add(_registration);
-                Helper.Database.SaveChanges();
+                _registration.Racekitoptionid = 'C';
+                LoadInDatabase();
             }
         }
+    }
+    private void LoadInDatabase()
+    {
+        Helper.Database.Add(_registration);
+        Helper.Database.SaveChanges();
+        RegistrationConfirmation registrationConfirmation = new RegistrationConfirmation();
+        registrationConfirmation.Show();
+        Close();
     }
 
     private void Beack(object? sender, RoutedEventArgs e)
@@ -167,13 +172,11 @@ public partial class RegisterForAnEvent : Window
     {
         if (variant1.IsChecked == true)
         {
-            v1 = true;
             cost += 145;
             Resultsumm.Text = $"${cost}";
         }
         else
         {
-            v1 = false;
             cost -= 145;
             Resultsumm.Text = $"${cost}";
         }
@@ -183,13 +186,11 @@ public partial class RegisterForAnEvent : Window
     {
         if (variant2.IsChecked == true)
         {
-            v2 = true;
             cost += 75;
             Resultsumm.Text = $"${cost}";
         }
         else
         {
-            v2 = false;
             cost -= 75;
             Resultsumm.Text = $"${cost}";
         }
@@ -199,13 +200,11 @@ public partial class RegisterForAnEvent : Window
     {
         if (variant3.IsChecked == true)
         {
-            v3 = true;
             cost += 20;
             Resultsumm.Text = $"${cost}";
         }
         else
         {
-            v3 = false;
             cost -= 20;
             Resultsumm.Text = $"${cost}";
         }
@@ -216,9 +215,14 @@ public partial class RegisterForAnEvent : Window
         if (rad1.IsChecked == true)
         {
             cost -= buf;
+            v1 = true;
             result = 0;
             buf = 0;
             Resultsumm.Text = $"${cost}";
+        }
+        else
+        {
+            v1 = false;
         }
     }
 
@@ -227,10 +231,15 @@ public partial class RegisterForAnEvent : Window
         if (rad2.IsChecked == true)
         {
             cost -= buf;
+            v2 = true;
             cost += 20;
             result = 20;
             buf = 20;
             Resultsumm.Text = $"${cost}";
+        }
+        else
+        {
+            v2 = false;
         }
     }
 
@@ -240,9 +249,14 @@ public partial class RegisterForAnEvent : Window
         {
             cost -= buf;
             result = 45;
+            v3 = true;
             cost += 45;
             buf = 45;
             Resultsumm.Text = $"${cost}";
+        }
+        else
+        {
+            v3 = false;
         }
     }
 }

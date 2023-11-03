@@ -60,6 +60,7 @@
                                            VerticalAlignment="Center"/>
                                 <TextBox Watermark="Enter your email address"
                                          Width="300"
+                                         Text="a.adkin@dayrep.net"
                                          Name="EmailBox"
                                          CornerRadius="0"/>
                                 <TextBlock
@@ -75,6 +76,7 @@
                                            VerticalAlignment="Center"/>
                                 <TextBox Watermark="Enter your password"
                                          Width="300"
+                                         Text="jwZh2x@p"
                                          Name="PasswordBox"
                                          CornerRadius="0"/>
                                 <TextBlock

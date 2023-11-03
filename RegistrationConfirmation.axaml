@@ -1,0 +1,84 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MarathonSkills2016.RegistrationConfirmation"
+        MinHeight="500"
+        MinWidth="500"
+        Title="RegistrationConfirmation">
+    <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel 
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        Background="#505050"
+                        />
+                <StackPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"
+                            HorizontalAlignment="Left"
+                            Margin="20"
+                            VerticalAlignment="Center">
+                        <StackPanel
+                                Orientation="Horizontal">
+                                <Button Margin=" 0 0 20 0"
+                                        Content="Назад"
+                                        Click="Beack"
+                                        Background="#ebebeb"/>
+                                <TextBlock Text="Marathon Skills 2016"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           FontSize="30"/>
+                                <StackPanel
+                                        Margin="20 0 0 0"
+                                        VerticalAlignment="Center">
+                                        <Button
+                                                Click="Logout"
+                                                Content="Logout"
+                                                Background="#ebebeb"/>
+                                </StackPanel>
+                        </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center">
+                        <TextBlock Text="Спасибо за вашу регистрацию в качестве бегуна!"
+                                   Margin="20"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock
+                                TextWrapping="Wrap"
+                                Margin="20"
+                                Text="Спасибо за вашу регистрацию в качестве бегуна в Marathon Skills 2016! С вами свяжутся по поводу оплаты."
+                                TextAlignment="Center"/>
+                        <Button
+                                BorderBrush="Black"
+                                Margin="20"
+                                Click="OkButton"
+                                HorizontalAlignment="Center">
+                                <TextBlock Text="Ок"
+                                           Margin="20 0 20 0"/>
+                        </Button>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Background="#505050"/>
+                <StackPanel Grid.Column="1" Grid.Row="2"
+                            Grid.ColumnSpan="3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                        <TextBlock Name="Timers" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                </StackPanel>
+        </Grid>
+</Window>

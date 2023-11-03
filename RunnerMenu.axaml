@@ -67,6 +67,7 @@
                                                 Margin="10"/>
                                         <Button BorderBrush="Black"
                                                 CornerRadius="10"
+                                                Click="EditProfile"
                                                 Height="70" Width="200"
                                                 Margin="10">
                                                 <TextBlock

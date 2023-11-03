@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -14,23 +12,26 @@ using MarathonSkills2016.Models;
 
 namespace MarathonSkills2016;
 
-public partial class RegisterRunnerMenu : Window
+public partial class EditRunnerProfile : Window
 {
     private Runner _runners;
     private User _user;
     private List<Country> countriestable = Helper.Database.Countries.ToList();
     
     private DispatcherTimer _timer = new DispatcherTimer();
-    public RegisterRunnerMenu()
+    
+    
+    public EditRunnerProfile()
     {
         InitializeComponent();
         _timer.Interval = TimeSpan.FromSeconds(0);
         _timer.Tick += TimerTick;
         _timer.Start();
+        _email.Text = SaveUser.User[0].Email;
         CountryBox();
     }
-
-    private void CountryBox()
+    
+private void CountryBox()
     {
         _contry.Items = countriestable.Select(x => new
         {
@@ -89,23 +90,6 @@ public partial class RegisterRunnerMenu : Window
     private void SaveButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         byte i = 0;
-        if (_email.Text != null && _email.Text != "")
-        {
-            if (_email.Text.IndexOf('@') != -1 && _email.Text.IndexOf('.') != -1 && _email.Text.IndexOf('@') < _email.Text.LastIndexOf('.'))
-            {
-                _emailchack.Text = "";
-                i += 1;
-            }
-            else
-            {
-                _emailchack.Text = "Это не адрес эллектронной почты";
-            }
-        }
-        else
-        {
-            _emailchack.Text = "Все поля обязательны";
-        }
-        
         if (_password.Text != null && _password.Text != "")
         {
             if (_password.Text.Length > 5)
@@ -157,7 +141,7 @@ public partial class RegisterRunnerMenu : Window
         }
         else
         {
-            _passwordchack.Text = "Все поля обязательны";
+            i += 2;
         }
         
         if (_password2.Text != null && _password2.Text != "")
@@ -167,7 +151,7 @@ public partial class RegisterRunnerMenu : Window
         }
         else
         {
-            _passwordchack2.Text = "Все поля обязательны";
+            i += 2;
         }
         
         if (_name.Text != null && _name.Text != "")
@@ -228,7 +212,7 @@ public partial class RegisterRunnerMenu : Window
             contrychack.Text = "Все поля обязательны";
         }
 
-        if (i == 8)
+        if (i == 7)
         {
             
             if (_password.Text == _password2.Text)
@@ -262,6 +246,30 @@ public partial class RegisterRunnerMenu : Window
             }
             
         }
+        else if (i == 9)
+        {
+            /*_runners =  Runner();
+            _user = User();*/
+            _runners.Imagerunner = $"Images\\{_path}";
+            _runners.Email = _email.Text;
+            _runners.Gender = _gender.SelectedIndex == 0 ? ("Male") : ("Female");
+            _user.Email = _email.Text;
+            _user.Password = _password.Text;
+            _user.Firstname = _name.Text;
+            _user.Roleid = 'R';
+            _user.Lastname = _fam.Text;
+            _runners.Dateofbirth = Convert.ToDateTime(_date.Text);
+            _runners.Countrycode = countriestable[_contry.SelectedIndex].Countrycode;
+            //Подгрузка в базу данных
+            Helper.Database.Add(_runners);
+            Helper.Database.Add(_user);
+            //Сохранение базы данных
+            Helper.Database.SaveChanges();
+            //Закрыть
+            RegisterAsARunner registerAsARunner = new RegisterAsARunner();
+            registerAsARunner.Show();
+            Close();
+        }
     }
 
     private void Beack(object? sender, RoutedEventArgs e)
@@ -274,6 +282,14 @@ public partial class RegisterRunnerMenu : Window
     private void Cancel(object? sender, RoutedEventArgs e)
     {
         MainWindow mainWindow = new MainWindow();
+        mainWindow.Show();
+        Close();
+    }
+
+    private void Logout(object? sender, RoutedEventArgs e)
+    {
+        MainWindow mainWindow = new MainWindow();
+        SaveUser.User.Clear();
         mainWindow.Show();
         Close();
     }

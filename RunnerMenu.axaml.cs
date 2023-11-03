@@ -51,4 +51,11 @@ public partial class RunnerMenu : Window
         registerForAnEvent.Show();
         Close();
     }
+
+    private void EditProfile(object? sender, RoutedEventArgs e)
+    {
+        EditRunnerProfile editRunnerProfile = new EditRunnerProfile();
+        editRunnerProfile.Show();
+        Close();
+    }
 }
