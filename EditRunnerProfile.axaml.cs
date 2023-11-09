@@ -248,8 +248,7 @@ private void CountryBox()
         }
         else if (i == 9)
         {
-            /*_runners =  Runner();
-            _user = User();*/
+            
             _runners.Imagerunner = $"Images\\{_path}";
             _runners.Email = _email.Text;
             _runners.Gender = _gender.SelectedIndex == 0 ? ("Male") : ("Female");

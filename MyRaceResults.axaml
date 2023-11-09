@@ -1,0 +1,133 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MarathonSkills2016.MyRaceResults"
+        MinHeight="500"
+        MinWidth="500"
+        Title="MyRaceResults">
+    <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel 
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        Background="#505050"
+                        />
+                <StackPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"
+                            HorizontalAlignment="Left"
+                            Margin="20"
+                            VerticalAlignment="Center">
+                        <StackPanel
+                                Orientation="Horizontal">
+                                <Button Margin=" 0 0 20 0"
+                                        Content="Назад"
+                                        Click="Beack"
+                                        Background="#ebebeb"/>
+                                <TextBlock Text="Marathon Skills 2016"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           FontSize="30"/>
+                                <StackPanel
+                                        Margin="20 0 0 0"
+                                        VerticalAlignment="Center">
+                                        <Button
+                                                Click="Logout"
+                                                Content="Logout"
+                                                Background="#ebebeb"/>
+                                </StackPanel>
+                        </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center">
+                        <TextBlock Text="Мои результаты"
+                                   Margin="20"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock
+                                TextWrapping="Wrap"
+                                Margin="20"
+                                Width="600"
+                                Text="Это - список всех ваших прошлых результатов гонки для Marathon Skills. Общее место сравнивает всех бегунов. Место по категории compares runners in the same gender and age categories."
+                                TextAlignment="Center"/>
+                        <StackPanel
+                                Margin="10"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock Name="GenderRunner"/>
+                                <TextBlock 
+                                        Margin="100 0 0 0 "
+                                        Name="AgeRunner"/>
+                        </StackPanel>
+                        <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock 
+                                        Margin="20 0 0 0"
+                                        Text="Марафон"/>
+                                <TextBlock 
+                                        Margin="100 0 0 0"
+                                        Text="Дистация"/>
+                                <TextBlock 
+                                        Margin="100 0 0 0"
+                                        Text="Время"/>
+                                <TextBlock 
+                                        Margin="100 0 0 0"
+                                        Text="Общее место"/>
+                                <TextBlock 
+                                        Margin="100 0 0 0"
+                                        Text="Место по категории"/>
+                        </StackPanel>
+                        <StackPanel
+                                Margin="10"
+                                Orientation="Horizontal">
+                                <ListBox
+                                        Name="Maraphon">
+                                        <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                        <StackPanel
+                                                                Orientation="Horizontal">
+                                                                <TextBlock 
+                                                                        Text="{Binding NameMaraphon}"/>
+                                                                <TextBlock 
+                                                                        Margin="100 0 0 0"
+                                                                        Text="{Binding Distantion}"/>
+                                                                <TextBlock 
+                                                                        Margin="100 0 0 0"
+                                                                        Text="{Binding TimeRunner}"/>
+                                                                <TextBlock 
+                                                                        Margin="100 0 0 0"
+                                                                        Text="{Binding GeneralPlace}"/>
+                                                                <TextBlock 
+                                                                        Margin="100 0 0 0"
+                                                                        Text="{Binding PlaceByCategory}"/>
+                                                        </StackPanel>
+                                                </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                </ListBox>
+                        </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Background="#505050"/>
+                <StackPanel Grid.Column="1" Grid.Row="2"
+                            Grid.ColumnSpan="3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                        <TextBlock Name="Timers" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                </StackPanel>
+        </Grid>
+</Window>

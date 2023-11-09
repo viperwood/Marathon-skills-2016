@@ -11,7 +11,7 @@ public partial class Runner
 
     public string Gender { get; set; } = null!;
 
-    public DateTime? Dateofbirth { get; set; }
+    public DateTime Dateofbirth { get; set; }
 
     public string Countrycode { get; set; } = null!;
 

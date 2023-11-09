@@ -58,4 +58,11 @@ public partial class RunnerMenu : Window
         editRunnerProfile.Show();
         Close();
     }
+
+    private void MyResultWindow(object? sender, RoutedEventArgs e)
+    {
+        MyRaceResults myRaceResults = new MyRaceResults();
+        myRaceResults.Show();
+        Close();
+    }
 }
