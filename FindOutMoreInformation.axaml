@@ -61,6 +61,7 @@
                                 <Button Content="Насколько долгий марафон"
                                         BorderBrush="Black"
                                         CornerRadius="10"
+                                        Click="HowLongMaraphonButton"
                                         Height="70" Width="200" 
                                         VerticalContentAlignment="Center"
                                         HorizontalContentAlignment="Center"

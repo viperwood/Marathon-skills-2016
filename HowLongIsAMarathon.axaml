@@ -4,6 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MarathonSkills2016.HowLongIsAMarathon"
+        MinHeight="600"
+        MinWidth="600"
         Title="HowLongIsAMarathon">
         <Grid>
                 <Grid.RowDefinitions>
@@ -48,21 +50,154 @@
                                 <StackPanel 
                                         HorizontalAlignment="Center">
                                         <TextBlock 
+                                                Name="NameParagraph"
                                                 Text="Имя выбранного пункта"
                                                 HorizontalAlignment="Center"/>
                                         
                                         <StackPanel 
                                                 HorizontalAlignment="Center">
-                                                <StackPanel 
+                                                <Border 
                                                         Width="200" 
                                                         Margin="10"
-                                                        Height="100" 
-                                                        Background="Aqua"/>
+                                                        BorderBrush="Black"
+                                                        BorderThickness="1"
+                                                        Height="150" 
+                                                        Background="LightGray">
+                                                        <StackPanel>
+                                                                <Image Name="PhotoImage"/>
+                                                                <TextBlock Text="Выбранное photo"
+                                                                           Name="PhotoBlock"
+                                                                           HorizontalAlignment="Center"
+                                                                           VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                </Border>
                                                 <TextBlock Text="Информация о скоромти выбронного пункта и сколько времени это взяло бы, чтобы закончить марафон."
                                                            TextWrapping="Wrap"
                                                            Width="300"
                                                            TextAlignment="Center"/>
                                         </StackPanel>
+                                </StackPanel>
+                                <StackPanel>
+                                        <StackPanel
+                                                Orientation="Horizontal">
+                                                <Button Content="Скорость"/>
+                                                <Button Content="Дистанция"/>
+                                        </StackPanel>
+                                        <Border
+                                                Width="250"
+                                                Height="400"
+                                                BorderBrush="Black"
+                                                BorderThickness="1">
+                                                <ScrollViewer>
+                                                        <StackPanel>
+                                                                <Button Background="Transparent" Click="Paragraph1" Width="250">
+                                                                        <StackPanel
+                                                                                Orientation="Horizontal">
+                                                                                <Border Width="80"
+                                                                                        Height="50"
+                                                                                        BorderBrush="Gray"
+                                                                                        BorderThickness="1"
+                                                                                        Margin="10"
+                                                                                        Background="LightGray">
+                                                                                        <Image Source="PhotoFromHowLong/f1-car.jpg"/>
+                                                                                </Border>
+                                                                                <TextBlock Text="F1 Car"
+                                                                                           VerticalAlignment="Center"/>
+                                                                        </StackPanel>
+                                                                </Button>
+                                                                <Button Background="Transparent" Click="Paragraph2" Width="250">
+                                                                        <StackPanel
+                                                                                Orientation="Horizontal">
+                                                                                <Border Width="80"
+                                                                                        Height="50"
+                                                                                        BorderBrush="Gray"
+                                                                                        BorderThickness="1"
+                                                                                        Margin="10"
+                                                                                        Background="LightGray">
+                                                                                        <Image Source="PhotoFromHowLong/slug.jpg"/>
+                                                                                </Border>
+                                                                                <TextBlock Text="Slug"
+                                                                                           VerticalAlignment="Center"/>
+                                                                        </StackPanel>
+                                                                </Button>
+                                                                <Button Background="Transparent" Click="Paragraph3" Width="250">
+                                                                        <StackPanel
+                                                                                Orientation="Horizontal">
+                                                                                <Border Width="80"
+                                                                                        Height="50"
+                                                                                        BorderBrush="Gray"
+                                                                                        BorderThickness="1"
+                                                                                        Margin="10"
+                                                                                        Background="LightGray">
+                                                                                        <Image Source="PhotoFromHowLong/horse.png"/>
+                                                                                </Border>
+                                                                                <TextBlock Text="Horse"
+                                                                                           VerticalAlignment="Center"/>
+                                                                        </StackPanel>
+                                                                </Button>
+                                                                <Button Background="Transparent" Click="Paragraph4" Width="250">
+                                                                        <StackPanel
+                                                                                Orientation="Horizontal">
+                                                                                <Border Width="80"
+                                                                                        Height="50"
+                                                                                        BorderBrush="Gray"
+                                                                                        BorderThickness="1"
+                                                                                        Margin="10"
+                                                                                        Background="LightGray">
+                                                                                        <Image Source="PhotoFromHowLong/sloth.jpg"/>
+                                                                                </Border>
+                                                                                <TextBlock Text="Sloth"
+                                                                                           VerticalAlignment="Center"/>
+                                                                        </StackPanel>
+                                                                </Button>
+                                                                <Button Background="Transparent" Click="Paragraph5" Width="250">
+                                                                        <StackPanel
+                                                                                Orientation="Horizontal">
+                                                                                <Border Width="80"
+                                                                                        Height="50"
+                                                                                        BorderBrush="Gray"
+                                                                                        BorderThickness="1"
+                                                                                        Margin="10"
+                                                                                        Background="LightGray">
+                                                                                        <Image Source="PhotoFromHowLong/capybara.jpg"/>
+                                                                                </Border>
+                                                                                <TextBlock Text="Capybara"
+                                                                                           VerticalAlignment="Center"/>
+                                                                        </StackPanel>
+                                                                </Button>
+                                                                <Button Background="Transparent" Click="Paragraph6" Width="250">
+                                                                        <StackPanel
+                                                                                Orientation="Horizontal">
+                                                                                <Border Width="80"
+                                                                                        Height="50"
+                                                                                        BorderBrush="Gray"
+                                                                                        BorderThickness="1"
+                                                                                        Margin="10"
+                                                                                        Background="LightGray">
+                                                                                        <Image Source="PhotoFromHowLong/jaguar.jpg"/>
+                                                                                </Border>
+                                                                                <TextBlock Text="Jaguar"
+                                                                                        VerticalAlignment="Center"/>
+                                                                        </StackPanel>
+                                                                </Button>
+                                                                <Button Background="Transparent" Click="Paragraph7" Width="250">
+                                                                        <StackPanel
+                                                                                Orientation="Horizontal">
+                                                                                <Border Width="80"
+                                                                                        Height="50"
+                                                                                        BorderBrush="Gray"
+                                                                                        BorderThickness="1"
+                                                                                        Margin="10"
+                                                                                        Background="LightGray">
+                                                                                        <Image Source="PhotoFromHowLong/worm.jpg"/>
+                                                                                </Border>
+                                                                                <TextBlock Text="Worm"
+                                                                                        VerticalAlignment="Center"/>
+                                                                        </StackPanel>
+                                                                </Button>
+                                                        </StackPanel>
+                                                </ScrollViewer>
+                                        </Border>
                                 </StackPanel>
                         </StackPanel>
                 </StackPanel>

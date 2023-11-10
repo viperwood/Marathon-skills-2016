@@ -37,4 +37,11 @@ public partial class FindOutMoreInformation : Window
         listOfCharities.Show();
         Close();
     }
+
+    private void HowLongMaraphonButton(object? sender, RoutedEventArgs e)
+    {
+        HowLongIsAMarathon howLongIsAMarathon = new HowLongIsAMarathon();
+        howLongIsAMarathon.Show();
+        Close();
+    }
 }

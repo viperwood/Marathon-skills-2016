@@ -274,6 +274,7 @@
                                 HorizontalAlignment="Center"
                                 Orientation="Horizontal">
                                 <Button Content="Регистрация"
+                                        Click="SaveButton"
                                         Margin="10"/>
                                 <Button Content="Отмена"
                                         Margin="10"/>

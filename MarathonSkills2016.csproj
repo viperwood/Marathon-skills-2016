@@ -35,4 +35,53 @@
     <ItemGroup>
       <Folder Include="Images\" />
     </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="PhotoFromHowLong\airbus-a380.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\airbus-a380.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\bus.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\bus.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\capybara.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\capybara.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\f1-car.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\f1-car.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\football-field.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\football-field.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\jaguar.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\jaguar.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\pair-of-havaianas.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\pair-of-havaianas.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\ronaldinho.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\ronaldinho.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\sloth.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\sloth.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\slug.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\slug.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\worm.jpg" />
+      <AvaloniaResource Include="PhotoFromHowLong\worm.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="PhotoFromHowLong\horse.png" />
+      <AvaloniaResource Include="PhotoFromHowLong\horse.png" />
+    </ItemGroup>
 </Project>

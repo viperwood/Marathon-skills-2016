@@ -217,8 +217,8 @@ private void CountryBox()
             
             if (_password.Text == _password2.Text)
             {
-                _runners = new Runner();
-                _user = new User();
+                _runners = Helper.Database.Runners.Find(SaveUser.Userinf[0].Runnerid);
+                _user = Helper.Database.Users.Find(SaveUser.Userinf[0].Email);
                 _runners.Imagerunner = $"Images\\{_path}";
                 _runners.Email = _email.Text;
                 _runners.Gender = _gender.SelectedIndex == 0 ? ("Male") : ("Female");
@@ -230,8 +230,8 @@ private void CountryBox()
                 _runners.Dateofbirth = Convert.ToDateTime(_date.Text);
                 _runners.Countrycode = countriestable[_contry.SelectedIndex].Countrycode;
                 //Подгрузка в базу данных
-                Helper.Database.Add(_runners);
-                Helper.Database.Add(_user);
+                /*Helper.Database.Add(_runners);
+                Helper.Database.Add(_user);*/
                 //Сохранение базы данных
                 Helper.Database.SaveChanges();
                 //Закрыть
@@ -248,7 +248,8 @@ private void CountryBox()
         }
         else if (i == 9)
         {
-            
+            _runners = Helper.Database.Runners.Find(SaveUser.Userinf[0].Runnerid);
+            _user = Helper.Database.Users.Find(SaveUser.Userinf[0].Email);
             _runners.Imagerunner = $"Images\\{_path}";
             _runners.Email = _email.Text;
             _runners.Gender = _gender.SelectedIndex == 0 ? ("Male") : ("Female");
@@ -260,8 +261,8 @@ private void CountryBox()
             _runners.Dateofbirth = Convert.ToDateTime(_date.Text);
             _runners.Countrycode = countriestable[_contry.SelectedIndex].Countrycode;
             //Подгрузка в базу данных
-            Helper.Database.Add(_runners);
-            Helper.Database.Add(_user);
+            /*Helper.Database.Add(_runners);
+            Helper.Database.Add(_user);*/
             //Сохранение базы данных
             Helper.Database.SaveChanges();
             //Закрыть
